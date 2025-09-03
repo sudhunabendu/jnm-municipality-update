@@ -27,7 +27,9 @@
                         @endphp
                         @if (!empty($images) && is_array($images))
                             @foreach ($images as $image)
-                                <div class="image-layer" style="background-image: url('{{ asset('public/images/banner_images/' . $image) }}');" class="slider-image">
+                                <div class="image-layer"
+                                    style="background-image: url('{{ asset('public/images/banner_images/' . $image) }}');"
+                                    class="slider-image">
                                 </div>
                             @endforeach
                         @endif
@@ -244,169 +246,71 @@
     <!--End About Style1-->
 
     <!--Start Services Style1-->
-    <section class="services-style1">
-        <div class="shape1"></div>
-        <div class="shape2 rotate-me"><img src="assets/images/shapes/services-v1-shape1.png" alt="#">
-        </div>
-        <div class="shape3 float-bob-y"><img src="assets/images/shapes/services-v1-shape2.png" alt="#">
-        </div>
-        <div class="shape4"><img src="assets/images/shapes/services-v1-shape3.png" alt="#"></div>
-        <div class="auto-container">
-            <div class="sec-title text-center">
-                <div class="sub-title">
-                    <h6>EFFICIENCY - OPPORTUNITY</h6>
-                </div>
-                <h2>City Municipality Services <br>And Departments</h2>
+    {{-- <section class="services-style1">
+        <h3>Notice Board</h3>
+    </section> --}}
+<section class="news-events-section">
+    <div class="section-header">
+        <h3><span class="icon">📰</span> News & Events</h3>
+    </div>
+
+    <div class="news-events-container">
+        <!-- Left: Image Carousel -->
+        <div class="image-carousel">
+            <div class="carousel-inner">
+                <img src="{{ asset('public/frontend/assets/images/news/event1.jpg') }}" alt="Event 1" class="active">
+                <img src="{{ asset('public/frontend/assets/images/news/event2.jpg') }}" alt="Event 2">
+                <img src="{{ asset('public/frontend/assets/images/news/event3.jpg') }}" alt="Event 3">
             </div>
-            <div class="row">
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-5"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html"> Government And <br> Elections</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-6"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html">Employment And <br> Job Planning</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-7"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html"> Real Estate And <br> Buildings</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="100ms"
-                    data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-16"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html"> Business Tax And <br> Finance</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-121"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html">Health & Medical <br> Department</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-9"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html">Finance & Legal <br> Department</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-10"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html">Park & Recreation <br> Department</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="100ms"
-                    data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-11"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html"> Sidewalks, Parking <br> Highways</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
+            <div class="carousel-controls">
+                <button class="prev-btn"><</button>
+                <button class="next-btn">></button>
             </div>
         </div>
-    </section>
+
+        <!-- Right: News Ticker -->
+        <div class="news-ticker">
+            <div class="ticker-container">
+                <ul class="ticker-list">
+                    <li class="ticker-item">
+                        <span class="date">April 18, 2025</span>
+                        <p><strong>Community Health Camp</strong> held at Jaynagar Stadium.</p>
+                    </li>
+                    <li class="ticker-item">
+                        <span class="date">April 15, 2025</span>
+                        <p><strong>Tax Deadline Extended</strong> to April 30, 2025.</p>
+                    </li>
+                    <li class="ticker-item">
+                        <span class="date">April 10, 2025</span>
+                        <p><strong>Public Meeting</strong> on waste management scheduled.</p>
+                    </li>
+                    <li class="ticker-item">
+                        <span class="date">April 5, 2025</span>
+                        <p><strong>Spring Festival</strong> lights up Majilpur Grounds.</p>
+                    </li>
+                    <li class="ticker-item">
+                        <span class="date">March 28, 2025</span>
+                        <p><strong>New Playground Inaugurated</strong> in Ward 7.</p>
+                    </li>
+
+                    <!-- Duplicates for seamless scroll -->
+                    <li class="ticker-item">
+                        <span class="date">April 18, 2025</span>
+                        <p><strong>Community Health Camp</strong> held at Jaynagar Stadium.</p>
+                    </li>
+                    <li class="ticker-item">
+                        <span class="date">April 15, 2025</span>
+                        <p><strong>Tax Deadline Extended</strong> to April 30, 2025.</p>
+                    </li>
+                    <li class="ticker-item">
+                        <span class="date">April 10, 2025</span>
+                        <p><strong>Public Meeting</strong> on waste management scheduled.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
     <!--End Services Style1-->
 
 
@@ -1237,35 +1141,35 @@
     </section>
     <!--End Events Style1-->
 
-<!--Start Video Style1-->
-<section class="video-style1">
-    <div class="video-style1__bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-        style="background-image: url(assets/images/backgrounds/video-v1-bg.jpg);">
-    </div>
-    <div class="auto-container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="video-style1__inner">
-                    <div class="sec-title text-center">
-                        <div class="sub-title">
-                            <h6>EFFICIENCY - OPPORTUNITY</h6>
-                        </div>
-                        <h2>City Municipality Services <br> And Departments</h2>
-                    </div>
-                    <div class="video-box">
-                        <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
-                            <div class="video-style1__video-icon">
-                                <span class="icon-play"></span>
-                                <i class="ripple"></i>
+    <!--Start Video Style1-->
+    <section class="video-style1">
+        <div class="video-style1__bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+            style="background-image: url(assets/images/backgrounds/video-v1-bg.jpg);">
+        </div>
+        <div class="auto-container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="video-style1__inner">
+                        <div class="sec-title text-center">
+                            <div class="sub-title">
+                                <h6>EFFICIENCY - OPPORTUNITY</h6>
                             </div>
-                        </a>
+                            <h2>City Municipality Services <br> And Departments</h2>
+                        </div>
+                        <div class="video-box">
+                            <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
+                                <div class="video-style1__video-icon">
+                                    <span class="icon-play"></span>
+                                    <i class="ripple"></i>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!--End Video Style1-->
+    </section>
+    <!--End Video Style1-->
 
     <!--Start Team Style1-->
     <section class="team-style1">
@@ -1422,21 +1326,21 @@
     <!--End Team Style1-->
 
 
-<!--Start Cta Style1-->
-<section class="cta-style1">
-    <div class="cta-style1__bg" style="background-image: url(assets/images/backgrounds/cta-v1-bg.png);"></div>
-    <div class="auto-container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="cta-style1__inner">
-                    <div class="cta-style1__title">
-                        <div class="sec-title">
-                            <div class="sub-title">
-                                <h6>Become Volunteer</h6>
+    <!--Start Cta Style1-->
+    <section class="cta-style1">
+        <div class="cta-style1__bg" style="background-image: url(assets/images/backgrounds/cta-v1-bg.png);"></div>
+        <div class="auto-container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="cta-style1__inner">
+                        <div class="cta-style1__title">
+                            <div class="sec-title">
+                                <div class="sub-title">
+                                    <h6>Become Volunteer</h6>
+                                </div>
+                                <h2>Become a Volunteer, Service to Our <br> City, & Make Difference!</h2>
                             </div>
-                            <h2>Become a Volunteer, Service to Our <br> City, & Make Difference!</h2>
                         </div>
-                    </div>
 
                         <div class="cta-style1__btn">
                             <a class="btn-one" href="#">
@@ -1602,4 +1506,48 @@
         </div>
     </section>
     <!--End Blog Style1-->
+@endsection
+
+@section('namespace_js')
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll('.carousel-inner img');
+    let index = 0;
+
+    function showImage(i) {
+        images.forEach(img => img.classList.remove('active'));
+        images[i].classList.add('active');
+    }
+
+    function next() {
+        index = (index + 1) % images.length;
+        showImage(index);
+    }
+
+    function prev() {
+        index = (index - 1 + images.length) % images.length;
+        showImage(index);
+    }
+
+    // Auto-slide
+    setInterval(next, 5000);
+
+    // Manual buttons
+    document.querySelector('.next-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        next();
+    });
+
+    document.querySelector('.prev-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        prev();
+    });
+
+    // Start
+    showImage(index);
+});
+</script>
 @endsection

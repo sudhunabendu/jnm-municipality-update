@@ -68,9 +68,9 @@
                     <div class="about-style2__content">
                         <div class="sec-title">
                             <div class="sub-title">
-                                <h6>About Govarnex</h6>
+                                <h6>About Jaynagar Majilpur</h6>
                             </div>
-                            <h2>Welcome & Support <br> To Govarnex City Municipal</h2>
+                            <h2>Welcome & Support <br> To Jaynagar Majilpur Municipality</h2>
                         </div>
                         <div class="about-style2__content-text">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec felis, suscipit mi

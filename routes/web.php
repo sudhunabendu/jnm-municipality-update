@@ -3,6 +3,7 @@
 // use App\Http\Controllers\Admin\AuthController;
 
 use App\Http\Controllers\FrontEnd\ContactController;
+use App\Http\Controllers\FrontEnd\GalleryController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[HomeController::class,'about'])->name('about');
 Route::get('/contact-us',[ContactController::class,'contact'])->name('contact-us');
 Route::get('/history',[HomeController::class,'history'])->name('history');
+Route::get('/gallery',[GalleryController::class,'index'])->name('gallery');
 Route::post('/contact-us/store',[ContactController::class,'storeContact'])->name('contact-us.store');
 
 

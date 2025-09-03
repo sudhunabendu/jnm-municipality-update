@@ -206,8 +206,8 @@
                                             <li class="dropdown">
                                                 <a href="#">Pages</a>
                                                 <ul>
-                                                    <li><a href="testimonials.html">Testimonials</a></li>
-                                                    <li><a href="faq.html">Faq</a></li>
+                                                    <li><a href="{{route('gallery')}}">Gallery</a></li>
+                                                    {{-- <li><a href="faq.html">Faq</a></li>
                                                     <li><a href="portfolio-grid.html">Portfolio One</a></li>
                                                     <li><a href="portfolio-masonry.html">Portfolio Two</a></li>
                                                     <li><a href="team-1.html">Team One</a></li>
@@ -215,7 +215,7 @@
                                                     <li><a href="team-details.html">Team Details</a></li>
                                                     <li><a href="events-1.html">Events One</a></li>
                                                     <li><a href="events-2.html">Events Two</a></li>
-                                                    <li><a href="event-details.html">Event Details</a></li>
+                                                    <li><a href="event-details.html">Event Details</a></li> --}}
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
