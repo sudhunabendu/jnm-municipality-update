@@ -95,6 +95,8 @@
     <script src={{ asset('public/dason/js/app.js') }}></script>
     <script src="{{ asset('public/dason/js/jquery.alphanum.js')}}"></script>
     @yield('bannerJS')
+    @yield('news_eventsJS')
+    @yield('galleryJS')
 </body>
 
 </html>

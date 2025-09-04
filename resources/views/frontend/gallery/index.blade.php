@@ -2,73 +2,100 @@
 
 @section('content')
 
-{{-- <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/module-css/08-blog-section.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/module-css/08-blog-section.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/module-css/09-breadcrumb-section.css') }}">
 
-        <!--Start Breadcrumb Style1-->
-        <section class="breadcrumb-style1">
-            <div class="breadcrumb-style1__bg"
-                style="background-image: url('{{ asset('public/frontend/assets/images/backgrounds/breadcrumb-v1-bg.jpg') }}');"></div>
+    <!--Start Breadcrumb Style1-->
+    <section class="breadcrumb-style1">
+        <div class="breadcrumb-style1__bg"
+            style="background-image: url('{{ asset('public/frontend/assets/images/backgrounds/breadcrumb-v1-bg.jpg') }}');">
+        </div>
+        <div class="auto-container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-style1__inner text-center">
+                        <h2>Gallery</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="breadcrumb-style1__bottom">
             <div class="auto-container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="breadcrumb-style1__inner text-center">
-                            <h2>Gallery</h2>
+                        <div class="breadcrumb-style1__bottom-menu">
+                            <ul>
+                                <li><a href="{{ route('home') }}">Home</a></li>
+                                <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                                <li>Gallery</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="breadcrumb-style1__bottom">
-                <div class="auto-container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="breadcrumb-style1__bottom-menu">
-                                <ul>
-                                    <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                                    <li>Gallery</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+        </div>
+    </section>
+    <!--End Breadcrumb Style1-->
+
+    <!--Start Portfolio Style1-->
+    <section class="portfolio-style1 portfolio-style1--grid">
+        <div class="auto-container">
+            <div class="sec-title text-center">
+                <div class="sub-title">
+                    <h6>Gallery</h6>
                 </div>
+                {{-- <h2>Our <br> Gallery</h2> --}}
             </div>
-        </section>
-        <!--End Breadcrumb Style1-->
 
-        <!--Start Portfolio Style1-->
-        <section class="portfolio-style1 portfolio-style1--grid">
-            <div class="auto-container">
-                <div class="sec-title text-center">
-                    <div class="sub-title">
-                        <h6>Gallery</h6>
-                    </div>
-                    {{-- <h2>Our <br> Gallery</h2> --}}
-                </div>
-
-                <div class="row">
-                    <!--Start Portfolio Style1 Grid Top-->
-                    <div class="portfolio-style1--grid__top">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                            <div class="portfolio-style1--grid__menu-box">
-                                <ul
-                                    class="project-filter clearfix post-filter has-dynamic-filters-counter list-unstyled">
-                                    <li data-filter=".filter-item" class="active"><span class="filter-text">View
-                                            All</span></li>
-                                    <li data-filter=".conference"><span class="filter-text">Conference</span></li>
-                                    <li data-filter=".celebration"><span class="filter-text">Celebration </span></li>
-                                    <li data-filter=".turist"><span class="filter-text">Turist</span></li>
-                                    <li data-filter=".government"><span class="filter-text">Government</span></li>
-                                </ul>
-                            </div>
+            <div class="row">
+                <!--Start Portfolio Style1 Grid Top-->
+                <div class="portfolio-style1--grid__top">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="portfolio-style1--grid__menu-box">
+                            <ul class="project-filter clearfix post-filter has-dynamic-filters-counter list-unstyled">
+                                <li data-filter=".filter-item" class="active"><span class="filter-text">View
+                                        All</span></li>
+                                <li data-filter=".conference"><span class="filter-text">Conference</span></li>
+                                <li data-filter=".celebration"><span class="filter-text">Celebration </span></li>
+                                <li data-filter=".turist"><span class="filter-text">Turist</span></li>
+                                <li data-filter=".government"><span class="filter-text">Government</span></li>
+                            </ul>
                         </div>
                     </div>
-                    <!--End Portfolio Style1 Grid Top-->
                 </div>
+                <!--End Portfolio Style1 Grid Top-->
+            </div>
 
-                <div class="row filter-layout masonary-layout">
-                    <!--Start Portfolio Style1 Single-->
-                    <div class="col-xl-4 col-lg-6 col-md-6 filter-item government turist">
+            <div class="row filter-layout masonary-layout">
+                <!--Start Portfolio Style1 Single-->
+
+                @if (isset($galleries) && count($galleries) > 0)
+                    @foreach ($galleries as $gallery)
+                        <div class="col-xl-4 col-lg-6 col-md-6 filter-item government turist">
+                            <div class="portfolio-style1__single">
+                                <div class="portfolio-style1__single-img">
+                                    <div class="inner">
+                                        <img src="{{ asset('public/images/gallery_images/' . $gallery->image_path) }}"
+                                            alt="#">
+                                        <div class="text-box">
+                                            <p>{{ $gallery->title }}</p>
+                                            {{-- <h2><a href="#">{{ $gallery->title }}</a></h2> --}}
+                                        </div>
+                                        <div class="portfolio-style1__link">
+                                            <a class="img-popup"
+                                                href="{{ asset('public/images/gallery_images/' . $gallery->image_path) }}"><span
+                                                    class="icon-plus"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <h4 class="text-danger text-center">No Gallery Found</h4>
+                @endif
+
+                {{-- <div class="col-xl-4 col-lg-6 col-md-6 filter-item government turist">
                         <div class="portfolio-style1__single">
                             <div class="portfolio-style1__single-img">
                                 <div class="inner">
@@ -85,11 +112,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End Portfolio Style1 Single-->
+                    </div> --}}
 
-                    <!--Start Portfolio Style1 Single-->
-                    <div class="col-xl-4 col-lg-6 col-md-6 filter-item turist conference government">
+                <!--End Portfolio Style1 Single-->
+
+                <!--Start Portfolio Style1 Single-->
+
+                {{-- <div class="col-xl-4 col-lg-6 col-md-6 filter-item turist conference government">
                         <div class="portfolio-style1__single">
                             <div class="portfolio-style1__single-img">
                                 <div class="inner">
@@ -106,11 +135,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End Portfolio Style1 Single-->
+                    </div> --}}
 
-                    <!--Start Portfolio Style1 Single-->
-                    <div class="col-xl-4 col-lg-6 col-md-6 conference filter-item government">
+                <!--End Portfolio Style1 Single-->
+
+                <!--Start Portfolio Style1 Single-->
+
+                {{-- <div class="col-xl-4 col-lg-6 col-md-6 conference filter-item government">
                         <div class="portfolio-style1__single">
                             <div class="portfolio-style1__single-img">
                                 <div class="inner">
@@ -127,11 +158,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End Portfolio Style1 Single-->
+                    </div> --}}
 
-                    <!--Start Portfolio Style1 Single-->
-                    <div class="col-xl-4 col-lg-6 col-md-6 celebration filter-item turist">
+                <!--End Portfolio Style1 Single-->
+
+                <!--Start Portfolio Style1 Single-->
+
+                {{-- <div class="col-xl-4 col-lg-6 col-md-6 celebration filter-item turist">
                         <div class="portfolio-style1__single">
                             <div class="portfolio-style1__single-img">
                                 <div class="inner">
@@ -148,11 +181,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End Portfolio Style1 Single-->
+                    </div> --}}
 
-                    <!--Start Portfolio Style1 Single-->
-                    <div class="col-xl-4 col-lg-6 col-md-6 conference filter-item government turist">
+                <!--End Portfolio Style1 Single-->
+
+                <!--Start Portfolio Style1 Single-->
+
+
+                {{-- <div class="col-xl-4 col-lg-6 col-md-6 conference filter-item government turist">
                         <div class="portfolio-style1__single">
                             <div class="portfolio-style1__single-img">
                                 <div class="inner">
@@ -170,11 +206,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End Portfolio Style1 Single-->
+                    </div> --}}
+                <!--End Portfolio Style1 Single-->
 
-                    <!--Start Portfolio Style1 Single-->
-                    <div class="col-xl-4 col-lg-6 col-md-6  filter-item government celebration">
+                <!--Start Portfolio Style1 Single-->
+
+                {{-- <div class="col-xl-4 col-lg-6 col-md-6  filter-item government celebration">
                         <div class="portfolio-style1__single">
                             <div class="portfolio-style1__single-img">
                                 <div class="inner">
@@ -191,56 +228,57 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End Portfolio Style1 Single-->
-                </div>
+                    </div> --}}
+
+                <!--End Portfolio Style1 Single-->
             </div>
-        </section>
-        <!--End Portfolio Style1-->
+        </div>
+    </section>
+    <!--End Portfolio Style1-->
 
 
-        <!--Start Newsletter Style1-->
-        <section class="newsletter-style1">
-            <div class="auto-container">
-                <div class="row">
-                    <!--Start Newsletter Style1 Title-->
-                    <div class="col-xl-4">
-                        <div class="newsletter-style1__title">
-                            <h2>Subscribe To Our <br> Newsletter</h2>
-                        </div>
+    <!--Start Newsletter Style1-->
+    <section class="newsletter-style1">
+        <div class="auto-container">
+            <div class="row">
+                <!--Start Newsletter Style1 Title-->
+                <div class="col-xl-4">
+                    <div class="newsletter-style1__title">
+                        <h2>Subscribe To Our <br> Newsletter</h2>
                     </div>
-                    <!--End Newsletter Style1 Title-->
+                </div>
+                <!--End Newsletter Style1 Title-->
 
-                    <!--Start Newsletter Style1 Form-->
-                    <div class="col-xl-8">
-                        <div class="newsletter-style1__form">
-                            <form action="https://mehedi.asiandevelopers.com/govarnex-demo/assets/inc/sendemail.php" class="comment-one__form contact-form-validated"
-                                novalidate="novalidate">
-                                <div class="newsletter-style1__form-inner">
-                                    <ul>
-                                        <li>
-                                            <div class="comment-form__input-box">
-                                                <input type="text" placeholder="Your name" name="name">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="comment-form__input-box">
-                                                <input type="email" placeholder="Your email" name="email">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="newsletter-style1__form-btn">
-                                        <button type="submit" class="btn-one newsletter-style1__form-btn">
-                                            <span class="txt">Subscribe Now</span></button>
-                                    </div>
+                <!--Start Newsletter Style1 Form-->
+                <div class="col-xl-8">
+                    <div class="newsletter-style1__form">
+                        <form action="https://mehedi.asiandevelopers.com/govarnex-demo/assets/inc/sendemail.php"
+                            class="comment-one__form contact-form-validated" novalidate="novalidate">
+                            <div class="newsletter-style1__form-inner">
+                                <ul>
+                                    <li>
+                                        <div class="comment-form__input-box">
+                                            <input type="text" placeholder="Your name" name="name">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-form__input-box">
+                                            <input type="email" placeholder="Your email" name="email">
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="newsletter-style1__form-btn">
+                                    <button type="submit" class="btn-one newsletter-style1__form-btn">
+                                        <span class="txt">Subscribe Now</span></button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
-                    <!--End Newsletter Style1 Form-->
                 </div>
+                <!--End Newsletter Style1 Form-->
             </div>
-        </section>
-        <!--End Newsletter Style1-->
+        </div>
+    </section>
+    <!--End Newsletter Style1-->
 
 @endsection

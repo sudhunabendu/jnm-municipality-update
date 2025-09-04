@@ -17,8 +17,7 @@
                                 </a>
                             </div>
                             <div class="our-company-info__text">
-                                <p>Tincidunt neque pretium lectus donec risus. Mauris mi tempor nunc orc leo
-                                    consequat vitae erat gravida lobortis nec et sagittis.</p>
+                                <p>14, N.S.C. Road, South 24 Parganas, Jaynagar Mazilpur, West Bengal 743337</p>
                             </div>
                             <ul class="our-company-info__social-link">
                                 <li>
@@ -126,7 +125,7 @@
         <div class="container">
             <div class="bottom-inner text-center">
                 <div class="copyright">
-                    <p>Copyright 2023 by <a href="#">govarnex</a> All Right Reserved.</p>
+                    <p>Copyright 2025 by <a href="#">Jaynagar Majilpur Municipality</a> All Right Reserved.</p>
                 </div>
             </div>
         </div>

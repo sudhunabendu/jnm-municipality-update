@@ -272,40 +272,51 @@
         <div class="news-ticker">
             <div class="ticker-container">
                 <ul class="ticker-list">
-                    <li class="ticker-item">
-                        <span class="date">April 18, 2025</span>
-                        <p><strong>Community Health Camp</strong> held at Jaynagar Stadium.</p>
-                    </li>
-                    <li class="ticker-item">
+                    @if($newsEvents && count($newsEvents) > 0)
+                        @foreach ($newsEvents as $newsEvent)
+                            <li class="ticker-item">
+                                <span class="date"><h5>{{ \Carbon\Carbon::parse($newsEvent->event_date)->format('F d, Y') }}</h5></span>
+                                <a href="{{ route('frontend.news_events.show', $newsEvent->slug) }}" target="_blank"><p><strong>{{ $newsEvent->title ?? '' }}</strong> - {{ Str::limit(strip_tags($newsEvent->content), 100) }}</p></a>
+                            </li>
+                        @endforeach
+                    @endif
+
+
+                    {{-- <li class="ticker-item">
                         <span class="date">April 15, 2025</span>
                         <p><strong>Tax Deadline Extended</strong> to April 30, 2025.</p>
                     </li>
+
                     <li class="ticker-item">
                         <span class="date">April 10, 2025</span>
                         <p><strong>Public Meeting</strong> on waste management scheduled.</p>
                     </li>
+
                     <li class="ticker-item">
                         <span class="date">April 5, 2025</span>
                         <p><strong>Spring Festival</strong> lights up Majilpur Grounds.</p>
                     </li>
+
                     <li class="ticker-item">
                         <span class="date">March 28, 2025</span>
                         <p><strong>New Playground Inaugurated</strong> in Ward 7.</p>
                     </li>
 
-                    <!-- Duplicates for seamless scroll -->
                     <li class="ticker-item">
                         <span class="date">April 18, 2025</span>
                         <p><strong>Community Health Camp</strong> held at Jaynagar Stadium.</p>
                     </li>
+
                     <li class="ticker-item">
                         <span class="date">April 15, 2025</span>
                         <p><strong>Tax Deadline Extended</strong> to April 30, 2025.</p>
                     </li>
+
                     <li class="ticker-item">
                         <span class="date">April 10, 2025</span>
                         <p><strong>Public Meeting</strong> on waste management scheduled.</p>
-                    </li>
+                    </li> --}}
+
                 </ul>
             </div>
         </div>
