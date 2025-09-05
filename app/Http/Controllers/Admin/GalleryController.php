@@ -100,9 +100,9 @@ class GalleryController extends Controller
         }
 
         $gallery = new Gallery();
-        $gallery->title = $request->title;
+        $gallery->title = $request->title ?? '';
         $gallery->slug = str_replace(' ', '_', $request->title);
-        $gallery->description = $request->description;
+        $gallery->description = $request->description ?? '';
 
         if ($request->hasFile('image_path') && $request->file('image_path')->isValid()) {
             $image = $request->file('image_path');

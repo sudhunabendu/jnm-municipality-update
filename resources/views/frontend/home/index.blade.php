@@ -249,40 +249,47 @@
     {{-- <section class="services-style1">
         <h3>Notice Board</h3>
     </section> --}}
-<section class="news-events-section">
-    <div class="section-header">
-        <h3><span class="icon">📰</span> News & Events</h3>
-    </div>
-
-    <div class="news-events-container">
-        <!-- Left: Image Carousel -->
-        <div class="image-carousel">
-            <div class="carousel-inner">
-                <img src="{{ asset('public/frontend/assets/images/news/event1.jpg') }}" alt="Event 1" class="active">
-                <img src="{{ asset('public/frontend/assets/images/news/event2.jpg') }}" alt="Event 2">
-                <img src="{{ asset('public/frontend/assets/images/news/event3.jpg') }}" alt="Event 3">
-            </div>
-            <div class="carousel-controls">
-                <button class="prev-btn"><</button>
-                <button class="next-btn">></button>
-            </div>
+    <section class="news-events-section">
+        <div class="section-header text-center">
+            <h3><span class="icon">📰</span> News & Events</h3>
         </div>
 
-        <!-- Right: News Ticker -->
-        <div class="news-ticker">
-            <div class="ticker-container">
-                <ul class="ticker-list">
-                    @if($newsEvents && count($newsEvents) > 0)
-                        @foreach ($newsEvents as $newsEvent)
-                            <li class="ticker-item">
-                                <span class="date"><h5>{{ \Carbon\Carbon::parse($newsEvent->event_date)->format('F d, Y') }}</h5></span>
-                                <a href="{{ route('frontend.news_events.show', $newsEvent->slug) }}" target="_blank"><p><strong>{{ $newsEvent->title ?? '' }}</strong> - {{ Str::limit(strip_tags($newsEvent->content), 100) }}</p></a>
-                            </li>
-                        @endforeach
-                    @endif
+        <div class="news-events-container">
+            <!-- Left: Image Carousel -->
+            <div class="image-carousel">
+                <div class="carousel-inner">
+                    <img src="{{ asset('public/frontend/assets/images/news/event1.jpg') }}" alt="Event 1"
+                        class="active">
+                    <img src="{{ asset('public/frontend/assets/images/news/event2.jpg') }}" alt="Event 2">
+                    <img src="{{ asset('public/frontend/assets/images/news/event3.jpg') }}" alt="Event 3">
+                </div>
+                <div class="carousel-controls">
+                    <button class="prev-btn">
+                        << /button>
+                            <button class="next-btn">></button>
+                </div>
+            </div>
+
+            <!-- Right: News Ticker -->
+            <div class="news-ticker">
+                <div class="ticker-container">
+                    <ul class="ticker-list">
+                        @if ($newsEvents && count($newsEvents) > 0)
+                            @foreach ($newsEvents as $newsEvent)
+                                <li class="ticker-item">
+                                    <span class="date">
+                                        <h5>{{ \Carbon\Carbon::parse($newsEvent->event_date)->format('F d, Y') }}</h5>
+                                    </span>
+                                    <a href="{{ route('frontend.news_events.show', $newsEvent->slug) }}" target="_blank">
+                                        <p><strong>{{ $newsEvent->title ?? '' }}</strong> -
+                                            {{ Str::limit(strip_tags($newsEvent->content), 100) }}</p>
+                                    </a>
+                                </li>
+                            @endforeach
+                        @endif
 
 
-                    {{-- <li class="ticker-item">
+                        {{-- <li class="ticker-item">
                         <span class="date">April 15, 2025</span>
                         <p><strong>Tax Deadline Extended</strong> to April 30, 2025.</p>
                     </li>
@@ -317,11 +324,11 @@
                         <p><strong>Public Meeting</strong> on waste management scheduled.</p>
                     </li> --}}
 
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
     <!--End Services Style1-->
 
 
@@ -1520,45 +1527,44 @@
 @endsection
 
 @section('namespace_js')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll('.carousel-inner img');
+            let index = 0;
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const images = document.querySelectorAll('.carousel-inner img');
-    let index = 0;
+            function showImage(i) {
+                images.forEach(img => img.classList.remove('active'));
+                images[i].classList.add('active');
+            }
 
-    function showImage(i) {
-        images.forEach(img => img.classList.remove('active'));
-        images[i].classList.add('active');
-    }
+            function next() {
+                index = (index + 1) % images.length;
+                showImage(index);
+            }
 
-    function next() {
-        index = (index + 1) % images.length;
-        showImage(index);
-    }
+            function prev() {
+                index = (index - 1 + images.length) % images.length;
+                showImage(index);
+            }
 
-    function prev() {
-        index = (index - 1 + images.length) % images.length;
-        showImage(index);
-    }
+            // Auto-slide
+            setInterval(next, 5000);
 
-    // Auto-slide
-    setInterval(next, 5000);
+            // Manual buttons
+            document.querySelector('.next-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                next();
+            });
 
-    // Manual buttons
-    document.querySelector('.next-btn').addEventListener('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        next();
-    });
+            document.querySelector('.prev-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                prev();
+            });
 
-    document.querySelector('.prev-btn').addEventListener('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        prev();
-    });
-
-    // Start
-    showImage(index);
-});
-</script>
+            // Start
+            showImage(index);
+        });
+    </script>
 @endsection

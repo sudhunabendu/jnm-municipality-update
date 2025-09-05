@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -56,5 +57,20 @@ class HomeController extends Controller
     public function history()
     {
         return view('frontend.history.indexNew');
+    }
+
+    public function category(){
+        try {
+            DB::table('categories')->insert([
+                'name' => 'government',
+                'slug' => 'government',
+                'status' => 'Active',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+            return 'category addedd successfully';
+        } catch (\Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
     }
 }

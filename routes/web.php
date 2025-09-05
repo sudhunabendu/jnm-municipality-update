@@ -34,6 +34,9 @@ Route::post('/contact-us/store',[ContactController::class,'storeContact'])->name
 Route::get('/news-events/{newsEvent}',[HomeController::class,'show'])->name('frontend.news_events.show');
 
 
+Route::get('/category',[HomeController::class,'category'])->name('category');
+
+
 Route::prefix("admin")->group(function () {
 
     Route::redirect('/','admin/login');

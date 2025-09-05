@@ -44,9 +44,9 @@ class NewsController extends Controller
         $newsEvent = new News();
         $newsEvent->title = $validated['title'];
         $newsEvent->slug = Str::slug($validated['title']) . '_' . time();
-        $newsEvent->content = $validated['content'];
-        $newsEvent->event_date = $validated['event_date'];
-        $newsEvent->type = $validated['type'];
+        $newsEvent->content = $validated['content'] ?? '';
+        $newsEvent->event_date = $validated['event_date'] ?? null;
+        $newsEvent->type = $validated['type'] ?? 'news';
 
         if ($request->hasFile('pdf_path')) {
             $file = $request->file('pdf_path');

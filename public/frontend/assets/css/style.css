@@ -6387,42 +6387,23 @@ History Timeline
 /* notice board css */
 
 /* === MOBILE-FIRST BASE STYLES === */
-.news-events-section {
-    /* background: #e6f2ff; */
-    background: #0066CC;
-    border-radius: 12px;
-    padding: 16px;
-    margin: 20px 10px;
-    max-width: 1500px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Arial, sans-serif;
-    overflow: hidden;
-}
+/* === CONTAINER: MOBILE STACKED, DESKTOP ROW WITH ADJUSTED RATIOS === */
 
-.section-header h3 {
-    text-align: center;
-    color: #2c3e50;
-    font-size: 18px;
-    margin: 0 0 16px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
-.section-header .icon {
-    font-size: 18px;
-}
-
-/* === CONTAINER: MOBILE STACKED BY DEFAULT === */
 .news-events-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-/* === IMAGE CAROUSEL MOBILE-FRIENDLY === */
+@media (min-width: 768px) {
+    .news-events-container {
+        flex-direction: row;
+        height: 260px; /* Slightly taller for better visibility */
+        align-items: center;
+    }
+}
+
+/* === IMAGE CAROUSEL: BIGGER ON DESKTOP === */
 .image-carousel {
     width: 100%;
     height: 180px;
@@ -6449,7 +6430,6 @@ History Timeline
     display: block;
 }
 
-/* Carousel Controls - Smaller for Mobile */
 .carousel-controls {
     position: absolute;
     bottom: 8px;
@@ -6480,14 +6460,14 @@ History Timeline
     color: white;
 }
 
-/* === NEWS TICKER MOBILE FIX === */
+/* === NEWS TICKER: SLIMMER ON DESKTOP === */
 .news-ticker {
     width: 100%;
     height: 180px;
     background: white;
     border: 1px solid #d1e5f6;
     border-radius: 10px;
-    padding: 12px;
+    padding: 10px;
     overflow: hidden;
     position: relative;
 }
@@ -6504,7 +6484,7 @@ History Timeline
     list-style: none;
     margin: 0;
     padding: 0;
-    animation: scrollUp 30s linear infinite;
+    animation: scrollUp 25s linear infinite; /* Faster scroll, smaller items */
 }
 
 @keyframes scrollUp {
@@ -6517,11 +6497,11 @@ History Timeline
 }
 
 .ticker-item {
-    padding: 10px 0;
+    padding: 8px 0;
     border-bottom: 1px dashed #eee;
-    font-size: 14px;
-    line-height: 1.4;
-    color: #333;
+    font-size: 13px; /* Smaller font */
+    line-height: 1.3;
+    color: #444;
 }
 
 .ticker-item:last-child {
@@ -6532,44 +6512,32 @@ History Timeline
     display: block;
     font-size: 11px;
     color: #777;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .ticker-item p {
     margin: 0;
-    color: #444;
+    color: #333;
 }
 
 .ticker-item strong {
-    color: #2c3e50;
+    color: #1a1a2e;
     font-weight: 600;
 }
 
-/* === TABLET (768px and up) === */
+/* === DESKTOP LAYOUT: CAROUSEL 65%, TICKER 35% === */
 @media (min-width: 768px) {
-    .news-events-section {
-        padding: 20px;
-        margin: 30px auto;
-    }
-
-    .section-header h3 {
-        font-size: 20px;
-        gap: 8px;
-    }
-
-    .section-header .icon {
-        font-size: 20px;
-    }
-
-    .news-events-container {
-        flex-direction: row;
-        height: 220px;
-    }
-
     .image-carousel {
-        flex: 1;
-        min-width: 280px;
+        flex: 3; /* Takes ~65% of width */
+        min-width: 300px;
         height: 100%;
+    }
+
+    .news-ticker {
+        flex: 1.5; /* Takes ~35% of width */
+        height: 100%;
+        padding: 12px;
+        font-size: 13px;
     }
 
     .carousel-controls {
@@ -6582,23 +6550,16 @@ History Timeline
         font-size: 18px;
     }
 
-    .news-ticker {
-        flex: 2;
-        height: 100%;
-        padding: 15px;
-    }
-
     .ticker-item {
-        font-size: 15px;
-        line-height: 1.5;
+        font-size: 13px;
+        line-height: 1.4;
     }
 
     .ticker-item .date {
-        font-size: 12px;
+        font-size: 11px;
     }
 }
 
-/* === DESKTOP (992px and up) === */
 @media (min-width: 992px) {
     .news-events-section {
         padding: 24px;
@@ -6610,7 +6571,7 @@ History Timeline
     }
 
     .news-events-container {
-        height: 300px;
+        height: 320px; /* Taller for better scrolling */
         gap: 20px;
     }
 
@@ -6626,12 +6587,12 @@ History Timeline
 
     .news-ticker {
         height: 100%;
-        padding: 20px;
+        padding: 15px;
     }
 
     .ticker-item {
-        font-size: 15px;
-        line-height: 1.6;
+        font-size: 14px;
+        line-height: 1.5;
     }
 
     .ticker-item .date {
@@ -6639,6 +6600,55 @@ History Timeline
     }
 }
 /* end notice board design */
-/*--------------------------------------------------------------
+
+
+/* Chairman css  Table */
+.chairman-table {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px 0;
+}
+
+.chairman-table th {
+    font-weight: 600;
+    color: #fff;
+    /* background-color: #1a1a2e; */
+    background-color: #0066CC;
+    text-align: center;
+}
+
+.chairman-table td {
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.chairman-table tbody tr:nth-child(odd) {
+    background-color: #e3f2fd;
+}
+
+.chairman-table tbody tr:nth-child(even) {
+    background-color: #f3f7ff;
+}
+
+.chairman-table tbody tr:hover {
+    background-color: #bbdefb !important;
+    transition: background-color 0.3s ease;
+}
+
+.chairman-table td:first-child {
+    font-weight: 500;
+    width: 80px;
+}
+
+.chairman-table td:last-child {
+    width: 200px;
+    text-align: center;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+/* End Chairman css */
+/*
 # End Css
 --------------------------------------------------------------*/

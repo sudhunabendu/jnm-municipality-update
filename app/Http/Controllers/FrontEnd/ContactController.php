@@ -25,11 +25,11 @@ class ContactController extends Controller
         ]);
         try {
             $new_contact = new Contact();
-            $new_contact->name = $request->name;
-            $new_contact->email = $request->email;
-            $new_contact->phone = $request->phone;
-            $new_contact->subject = $request->subject;
-            $new_contact->message = $request->message;
+            $new_contact->name = $request->name ?? '';
+            $new_contact->email = $request->email ?? '';
+            $new_contact->phone = $request->phone ?? '';
+            $new_contact->subject = $request->subject ?? '';
+            $new_contact->message = $request->message ?? '';
             $new_contact->save();
             return redirect()->back()->with('success', 'Your message has been sent successfully!');
         } catch (\Throwable $th) {
