@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('title'); // Headline/title
             $table->text('content'); // Full event/news content
             $table->string('slug')->unique(); // SEO-friendly URL
-            $table->string('pdf_path'); // Path to the image file
+            $table->string('pdf_path')->nullable();// Path to the image file
+            $table->string('image')->nullable();
             $table->date('event_date'); // Date of the event/news
             $table->enum('type', ['news', 'event'])->default('news'); // Type selector
+            $table->enum('status', ['Active', 'Inactive'])->default('Active');
             $table->timestamps();
         });
     }

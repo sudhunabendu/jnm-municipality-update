@@ -256,26 +256,54 @@
 
         <div class="news-events-container">
             <!-- Left: Image Carousel -->
-            <div class="image-carousel">
-                <div class="carousel-inner">
-                    <img src="{{ asset('public/frontend/assets/images/news/event1.jpg') }}" alt="Event 1"
-                        class="active">
-                    <img src="{{ asset('public/frontend/assets/images/news/event2.jpg') }}" alt="Event 2">
-                    <img src="{{ asset('public/frontend/assets/images/news/event3.jpg') }}" alt="Event 3">
-                </div>
+
+            {{-- <div class="image-carousel">
+                @if ($newsEvents && count($newsEvents) > 0)
+                    @foreach ($newsEvents as $newsEvent)
+                        @if ($newsEvent->type == 'event')
+                            <div class="carousel-inner">
+
+                                <img src="{{ asset('public/images/news/' . $newsEvent->image) }}" alt="Event 1"
+                                    class="active">
+                                <img src="{{ asset('public/frontend/assets/images/news/event2.jpg') }}" alt="Event 2">
+                                <img src="{{ asset('public/frontend/assets/images/news/event3.jpg') }}" alt="Event 3">
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
                 <div class="carousel-controls">
                     <button class="prev-btn">
                         << /button>
                             <button class="next-btn">></button>
                 </div>
+            </div> --}}
+            <div class="image-carousel">
+                @php
+                    $eventImages = $newsEvents->where('type', 'event')->whereNotNull('image');
+                @endphp
+                @if ($eventImages->count() > 0)
+                    <div class="carousel-inner">
+                        @foreach ($eventImages as $index => $newsEvent)
+                            <img src="{{ asset('public/images/news/' . $newsEvent->image) }}"
+                                alt="{{ $newsEvent->title }}" class="{{ $index == 0 ? 'active' : '' }}">
+                        @endforeach
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="prev-btn">&lt;</button>
+                        <button class="next-btn">&gt;</button>
+                    </div>
+                @endif
             </div>
 
             <!-- Right: News Ticker -->
             <div class="news-ticker">
                 <div class="ticker-container">
                     <ul class="ticker-list">
-                        @if ($newsEvents && count($newsEvents) > 0)
-                            @foreach ($newsEvents as $newsEvent)
+                        @php
+                            $newsImages = $newsEvents->where('type', 'news');
+                        @endphp
+                        @if ($newsImages && count($newsImages) > 0)
+                            @foreach ($newsImages as $newsEvent)
                                 <li class="ticker-item">
                                     <span class="date">
                                         <h5>{{ \Carbon\Carbon::parse($newsEvent->event_date)->format('F d, Y') }}</h5>
@@ -287,43 +315,6 @@
                                 </li>
                             @endforeach
                         @endif
-
-
-                        {{-- <li class="ticker-item">
-                        <span class="date">April 15, 2025</span>
-                        <p><strong>Tax Deadline Extended</strong> to April 30, 2025.</p>
-                    </li>
-
-                    <li class="ticker-item">
-                        <span class="date">April 10, 2025</span>
-                        <p><strong>Public Meeting</strong> on waste management scheduled.</p>
-                    </li>
-
-                    <li class="ticker-item">
-                        <span class="date">April 5, 2025</span>
-                        <p><strong>Spring Festival</strong> lights up Majilpur Grounds.</p>
-                    </li>
-
-                    <li class="ticker-item">
-                        <span class="date">March 28, 2025</span>
-                        <p><strong>New Playground Inaugurated</strong> in Ward 7.</p>
-                    </li>
-
-                    <li class="ticker-item">
-                        <span class="date">April 18, 2025</span>
-                        <p><strong>Community Health Camp</strong> held at Jaynagar Stadium.</p>
-                    </li>
-
-                    <li class="ticker-item">
-                        <span class="date">April 15, 2025</span>
-                        <p><strong>Tax Deadline Extended</strong> to April 30, 2025.</p>
-                    </li>
-
-                    <li class="ticker-item">
-                        <span class="date">April 10, 2025</span>
-                        <p><strong>Public Meeting</strong> on waste management scheduled.</p>
-                    </li> --}}
-
                     </ul>
                 </div>
             </div>
@@ -359,12 +350,13 @@
                             <div class="sub-title">
                                 <h6>Instant Services</h6>
                             </div>
-                            <h2>Quick Services From The <br> City Municipal</h2>
+                            <h2>Quick Services From The <br> Jaynagar Majilpur Municipality</h2>
                         </div>
 
                         <div class="instant-services-style1__content-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec felis, suscipit mi
-                                urna nulla at tincidunt feugiat vulputate.</p>
+                            <p>The municipality refers to the Board of Councillors, with one Councillor being elected from
+                                each of the 14 administrative wards of Jaynagar Majilpur city. The Board of Councillors
+                                elects a chairman from among its elected members.</p>
                         </div>
                         <div class="instant-services-style1__content-bottom">
                             <div class="row">
@@ -376,7 +368,7 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Holiday Trash & Recycling</a>
+                                                    <a href="#">Water purification and supply</a>
                                                 </div>
                                             </li>
 
@@ -385,7 +377,7 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Things To Do In Govarnex</a>
+                                                    <a href="#">Sewage treatment and disposal</a>
                                                 </div>
                                             </li>
 
@@ -394,7 +386,8 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Rent a Picnic Shelter</a>
+                                                    <a href="#">Garbage disposal and street cleanliness
+                                                    </a>
                                                 </div>
                                             </li>
 
@@ -403,7 +396,7 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Contact City Action Center</a>
+                                                    <a href="#">Food Inspection: Through JMM Food Inspectors</a>
                                                 </div>
                                             </li>
 
@@ -412,7 +405,15 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Youth Activities Details</a>
+                                                    <a href="#">Solid waste management</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Cemeteries and Crematoriums</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -427,7 +428,8 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Fishing or Boating Permit</a>
+                                                    <a href="#">Building and maintenance of roads, streets and
+                                                        flyovers</a>
                                                 </div>
                                             </li>
 
@@ -436,7 +438,7 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Get a Birth / Death Certificate
+                                                    <a href="#">Registering of births and deaths
                                                     </a>
                                                 </div>
                                             </li>
@@ -456,6 +458,24 @@
                                                 </div>
                                                 <div class="text">
                                                     <a href="#">Apply for Submit a Tax Papers
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Conservation of heritage sites
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Disease control, including immunisation
                                                     </a>
                                                 </div>
                                             </li>

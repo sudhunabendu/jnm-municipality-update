@@ -12,6 +12,11 @@
                         {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
                         <span data-key="t-dashboard">Dashboard</span>
                     </a>
+                    <a href="{{route('admin.roles')}}">
+                        <i data-feather="role"></i>
+                        {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
+                        <span data-key="t-dashboard">Roles</span>
+                    </a>
                     <a href="{{route('admin.banners')}}">
                         <i data-feather="users"></i>
                         {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
@@ -31,6 +36,11 @@
                         <i data-feather="phone"></i>
                         {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
                         <span data-key="t-dashboard">Contacts</span>
+                    </a>
+                    <a href="{{route('admin.councillors')}}">
+                        <i data-feather="users"></i>
+                        {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
+                        <span data-key="t-dashboard">councillor</span>
                     </a>
                 </li>
 

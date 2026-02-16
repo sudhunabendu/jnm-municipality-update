@@ -89,11 +89,24 @@
                         <!-- PDF Upload -->
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="pdf_path">News & Event PDF <span style="color:red">*</span></label>
+                                <label for="pdf_path">News & Event PDF </label>
                                 <input type="file" name="pdf_path"
                                     class="form-control @error('pdf_path') is-invalid @enderror"
                                     placeholder="Upload PDF File">
                                 @error('pdf_path')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="image">News & Event Image </label>
+                                <input type="file" name="image"
+                                    class="form-control @error('image') is-invalid @enderror"
+                                    placeholder="Upload PDF File">
+                                @error('image')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -127,11 +140,6 @@
             });
             $("[name='content']").on("focus", function() {
                 $("[data-error='content']").html("");
-                $(this).removeClass("is-invalid");
-            });
-
-            $("[name='pdf_path']").on("focus", function() {
-                $("[data-error='pdf_path']").html("");
                 $(this).removeClass("is-invalid");
             });
 

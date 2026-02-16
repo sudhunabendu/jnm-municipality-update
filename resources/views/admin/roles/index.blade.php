@@ -5,12 +5,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">News Events List</h4>
+                <h4 class="mb-sm-0 font-size-18">Role List</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">News Eventss</a></li>
-                        <li class="breadcrumb-item active">News Events List</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Roles</a></li>
+                        <li class="breadcrumb-item active">Role List</li>
                     </ol>
                 </div>
 
@@ -26,7 +26,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <h5 class="card-title">News Events List <span class="text-muted fw-normal ms-2">(834)</span>
+                                <h5 class="card-title">Role List <span class="text-muted fw-normal ms-2">({{$roles->count() ?? 0}})</span>
                                 </h5>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                     </ul>
                                 </div>
                                 <div>
-                                    <a href="{{route('admin.news_events.add')}}" class="btn btn-success"><i class="bx bx-plus me-1"></i> Add New</a>
+                                    <a href="{{route('admin.roles.add')}}" class="btn btn-success"><i class="bx bx-plus me-1"></i> Add New</a>
                                 </div>
 
                                 {{-- <div class="dropdown">
@@ -79,16 +79,15 @@
                                             <label class="form-check-label" for="checkAll"></label>
                                         </div>
                                     </th>
-                                    <th scope="col">News Event Title</th>
-                                    <th scope="col">News Event Content</th>
-                                    <th scope="col">News Event Date</th>
-                                    <th scope="col">News Event Type</th>
+                                    <th scope="col">Role Title</th>
+                                    <th scope="col">Created Date</th>
+                                    <th scope="col">Updated Date</th>
                                     <th scope="col">Status</th>
                                     <th style="width: 80px; min-width: 80px;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($newsEvents as $news_event)
+                                @foreach ($roles as $role)
                                     <tr>
                                         <th scope="row">
                                             <div class="form-check font-size-16">
@@ -96,26 +95,16 @@
                                                 <label class="form-check-label" for="contacusercheck1"></label>
                                             </div>
                                         </th>
+                                        <td>{{ strtoupper($role->name) }}</td>
                                         @php
-                                            $images = json_decode($news_event->images, true);
-                                        @endphp
-                                        <td>
-                                            @if (!empty($images) && isset($images[0]))
-                                            <img src="{{ asset('public/images/news_event_images/' . $images[0]) }}" alt=""
-                                                class="avatar-sm rounded-circle me-2">
-                                            {{-- <a href="#" class="text-body">Phyllis Gatlin</a> --}}
-                                            @endif
-                                        </td>
-                                        <td>{{ $news_event->title }}</td>
-                                        @php
-                                            $created_at = \Carbon\Carbon::parse($news_event->created_at);
-                                            $updated_at = \Carbon\Carbon::parse($news_event->updated_at);
+                                            $created_at = \Carbon\Carbon::parse($role->created_at);
+                                            $updated_at = \Carbon\Carbon::parse($role->updated_at);
                                         @endphp
                                         {{-- <td>{{ $created_at->diffForHumans() }}</td> --}}
                                         <td>{{ $created_at->format('d M, Y') }}</td>
                                         <td>{{ $updated_at->format('d M, Y') }}</td>
                                         <td>
-                                            @if ($news_event->status == 'Active')
+                                            @if ($role->status == 'Active')
                                                 <span class="badge badge-pill badge-soft-success font-size-11">Active</span>
                                             @else
                                                 <span class="badge badge-pill badge-soft-danger font-size-11">Inactive</span>
@@ -131,9 +120,9 @@
                                                     <i class="bx bx-dots-horizontal-rounded"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a href="{{ route('admin.banners.edit', $news_event->id) }}"
+                                                    <li><a href="{{ route('admin.banners.edit', $role->id) }}"
                                                 class="px-3 text-primary"><i class="bx bx-pencil font-size-18">Edit</i></a></li>
-                                                    <li><a href="{{ route('admin.banners.delete', $news_event->id) }}"
+                                                    <li><a href="{{ route('admin.banners.delete', $role->id) }}"
                                                 class="px-3 text-danger"><i class="bx bx-trash font-size-18">Trash</i></a></li>
                                                     {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                                                 </ul>

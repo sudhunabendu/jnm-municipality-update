@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\FrontEnd\GalleryController;
 use App\Http\Controllers\FrontEnd\HomeController;
+use App\Http\Controllers\Admin\CouncilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,8 @@ Route::get('/news-events/{newsEvent}',[HomeController::class,'show'])->name('fro
 
 Route::get('/category',[HomeController::class,'category'])->name('category');
 
+Route::get('/role-create',[App\Http\Controllers\Admin\AuthController::class,'createRole']);
+
 
 Route::prefix("admin")->group(function () {
 
@@ -64,6 +67,18 @@ Route::prefix("admin")->group(function () {
         Route::get('/news-events/add', [NewsController::class, 'create'])->name('admin.news_events.add');
         Route::post('/news-events/store', [NewsController::class, 'store'])->name('admin.news_events.store');
         Route::get('/news-events/{newsEvent}', [NewsController::class, 'show'])->name('admin.news_events.show');
+
+
+        //Role Management
+        Route::get('/roles', [App\Http\Controllers\Admin\RoleController::class,'index'])->name('admin.roles');
+        Route::get('/roles/add', [App\Http\Controllers\Admin\RoleController::class,'addRole'])->name('admin.roles.add');
+        Route::post('/roles/create', [App\Http\Controllers\Admin\RoleController::class,'createRole'])->name('admin.roles.create');
+
+
+        //Councillor Management
+        Route::get('/councillors', [CouncilController::class,'index'])->name('admin.councillors');
+        Route::get('/councillors/add', [CouncilController::class,'createCouncillor'])->name('admin.councillors.add');
+        Route::post('/councillors/create', [CouncilController::class,'storeCouncillor'])->name('admin.councillors.create');
     });
 
 });

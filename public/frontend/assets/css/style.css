@@ -6484,7 +6484,11 @@ History Timeline
     list-style: none;
     margin: 0;
     padding: 0;
-    animation: scrollUp 25s linear infinite; /* Faster scroll, smaller items */
+    animation: scrollUp 20s linear infinite; /* Faster scroll, smaller items */
+}
+
+.news-ticker:hover .ticker-list {
+    animation-play-state: paused;
 }
 
 @keyframes scrollUp {

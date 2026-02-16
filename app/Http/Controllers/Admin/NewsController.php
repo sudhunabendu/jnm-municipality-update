@@ -38,7 +38,8 @@ class NewsController extends Controller
             'content' => 'required',
             'event_date' => 'required|date',
             'type' => 'required|in:news,event',
-            'pdf_path' => 'required|mimes:pdf|max:4096', // Max 4MB
+            'pdf_path' => 'nullable|mimes:pdf|max:4096', // Max 4MB
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // 2MB
         ]);
         //return $request->all();
         $newsEvent = new News();
@@ -53,6 +54,13 @@ class NewsController extends Controller
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('pdf/news'), $fileName);
             $newsEvent->pdf_path = $fileName;
+        }
+         // ✅ Upload Image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'_'.$image->getClientOriginalName();
+            $image->move(public_path('images/news'), $imageName);
+            $newsEvent->image = $imageName;
         }
         $newsEvent->save();
 
