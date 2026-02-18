@@ -81,7 +81,7 @@
                                     </th>
                                     <th scope="col">Councillor Image</th>
                                     <th scope="col">Councillor Name</th>
-                                    <th scope="col">Word No.</th>
+                                    <th scope="col">Ward No.</th>
                                     <th scope="col">Created Date</th>
                                     <th scope="col">Updated Date</th>
                                     <th scope="col">Status</th>
@@ -100,13 +100,13 @@
 
                                         <td>
                                             @if ($council)
-                                            <img src="{{ asset('public/images/banner_images/' . $council->image) }}" alt=""
+                                            <img src="{{ asset('public/images/councillor_images/' . $council->image) }}" alt=""
                                                 class="avatar-sm rounded-circle me-2">
                                             {{-- <a href="#" class="text-body">Phyllis Gatlin</a> --}}
                                             @endif
                                         </td>
                                         <td>{{ $council->first_name }} {{ $council->last_name }}</td>
-                                        <td>{{ $council->word_no }}</td>
+                                        <td>{{ $council->word_number }}</td>
                                         @php
                                             $created_at = \Carbon\Carbon::parse($council->created_at);
                                             $updated_at = \Carbon\Carbon::parse($council->updated_at);

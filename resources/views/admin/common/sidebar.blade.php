@@ -17,6 +17,11 @@
                         {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
                         <span data-key="t-dashboard">Roles</span>
                     </a>
+                    <a href="{{route('admin.users')}}">
+                        <i data-feather="users"></i>
+                        {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
+                        <span data-key="t-dashboard">Users</span>
+                    </a>
                     <a href="{{route('admin.banners')}}">
                         <i data-feather="users"></i>
                         {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
@@ -40,7 +45,7 @@
                     <a href="{{route('admin.councillors')}}">
                         <i data-feather="users"></i>
                         {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
-                        <span data-key="t-dashboard">councillor</span>
+                        <span data-key="t-dashboard">Councillor</span>
                     </a>
                 </li>
 

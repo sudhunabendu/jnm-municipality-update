@@ -35,6 +35,13 @@
             height: 500px; /* Adjust height as needed */
             object-fit: cover; /* Ensures image covers the area */
         }
+
+        .logo-round {
+    width: 120px;      /* must be equal width & height */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover; /* prevents image stretching */
+}
     </style>
 </head>
 

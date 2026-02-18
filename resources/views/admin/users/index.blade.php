@@ -5,12 +5,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">News Events List</h4>
+                <h4 class="mb-sm-0 font-size-18">User List</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">News Eventss</a></li>
-                        <li class="breadcrumb-item active">News Events List</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">User</a></li>
+                        <li class="breadcrumb-item active">User List</li>
                     </ol>
                 </div>
 
@@ -26,7 +26,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <h5 class="card-title">News Events List <span class="text-muted fw-normal ms-2">(834)</span>
+                                <h5 class="card-title">User List <span class="text-muted fw-normal ms-2">({{$users->count()}})</span>
                                 </h5>
                             </div>
                         </div>
@@ -46,9 +46,11 @@
                                         </li>
                                     </ul>
                                 </div>
+                                @can('user-create')
                                 <div>
-                                    <a href="{{route('admin.news_events.add')}}" class="btn btn-success"><i class="bx bx-plus me-1"></i> Add New</a>
+                                    <a href="{{route('admin.users.add')}}" class="btn btn-success"><i class="bx bx-plus me-1"></i> Add New</a>
                                 </div>
+                                @endcan
 
                                 {{-- <div class="dropdown">
                                     <a class="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle"
@@ -80,17 +82,17 @@
                                         </div>
                                     </th>
                                     <th scope="col">SL No.</th>
-                                    <th scope="col">News Event Title</th>
-                                    <th scope="col">News Event Content</th>
-                                    <th scope="col">News Event Date</th>
-                                    <th scope="col">News Event Type</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">Email Address</th>
+                                    <th scope="col">Created Date</th>
+                                    <th scope="col">Updated Date</th>
                                     <th scope="col">Status</th>
                                     <th style="width: 80px; min-width: 80px;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
-                                @foreach ($newsEvents as $news_event)
+                                 <?php $i=1 ?>
+                                @foreach ($users as $user)
                                     <tr>
                                         <th scope="row">
                                             <div class="form-check font-size-16">
@@ -99,17 +101,19 @@
                                             </div>
                                         </th>
 
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $news_event->title }}</td>
+                                        <td>{{$i++}}</td>
+                                        <td>{{ $user->name ?? ""}}</td>
+                                        <td>{{ $user->email ?? ""}}</td>
+
                                         @php
-                                            $created_at = \Carbon\Carbon::parse($news_event->created_at);
-                                            $updated_at = \Carbon\Carbon::parse($news_event->updated_at);
+                                            $created_at = \Carbon\Carbon::parse($user->created_at);
+                                            $updated_at = \Carbon\Carbon::parse($user->updated_at);
                                         @endphp
                                         {{-- <td>{{ $created_at->diffForHumans() }}</td> --}}
                                         <td>{{ $created_at->format('d M, Y') }}</td>
                                         <td>{{ $updated_at->format('d M, Y') }}</td>
                                         <td>
-                                             @if ($news_event->status == 'Active')
+                                            @if ($user->status == 'active')
                                                 <span class="badge badge-pill badge-soft-success font-size-11">Active</span>
                                             @else
                                                 <span class="badge badge-pill badge-soft-danger font-size-11">Inactive</span>
@@ -125,9 +129,9 @@
                                                     <i class="bx bx-dots-horizontal-rounded"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a href="{{ route('admin.banners.edit', $news_event->id) }}"
+                                                    <li><a href="{{ route('admin.banners.edit', $user->id) }}"
                                                 class="px-3 text-primary"><i class="bx bx-pencil font-size-18">Edit</i></a></li>
-                                                    <li><a href="{{ route('admin.banners.delete', $news_event->id) }}"
+                                                    <li><a href="{{ route('admin.banners.delete', $user->id) }}"
                                                 class="px-3 text-danger"><i class="bx bx-trash font-size-18">Trash</i></a></li>
                                                     {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                                                 </ul>

@@ -38,6 +38,7 @@ Route::get('/news-events/{newsEvent}',[HomeController::class,'show'])->name('fro
 Route::get('/category',[HomeController::class,'category'])->name('category');
 
 Route::get('/role-create',[App\Http\Controllers\Admin\AuthController::class,'createRole']);
+Route::get('/permission-create',[App\Http\Controllers\Admin\AuthController::class,'createPermission']);
 
 
 Route::prefix("admin")->group(function () {
@@ -79,6 +80,12 @@ Route::prefix("admin")->group(function () {
         Route::get('/councillors', [CouncilController::class,'index'])->name('admin.councillors');
         Route::get('/councillors/add', [CouncilController::class,'createCouncillor'])->name('admin.councillors.add');
         Route::post('/councillors/create', [CouncilController::class,'storeCouncillor'])->name('admin.councillors.create');
+
+
+        //User Management
+        Route::get('/users', [App\Http\Controllers\Admin\UserController::class,'getUsers'])->name('admin.users');
+        Route::get('/users/add', [App\Http\Controllers\Admin\UserController::class,'createUser'])->name('admin.users.add')->middleware(['permission:user-create']);
+        Route::post('/users/create', [App\Http\Controllers\Admin\UserController::class,'storeUser'])->name('admin.users.create');
     });
 
 });

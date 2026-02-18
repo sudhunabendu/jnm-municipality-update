@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+
 class AuthController extends Controller
 {
     public function index()
@@ -68,6 +69,19 @@ class AuthController extends Controller
     public function assignRole(){
         $user = User::find(1);
         $user->assignRole('super-admin');
+        return $user;
+    }
+
+
+    public function createPermission(){
+        //$permission = Permission::create(['name' => 'gallery-create']);
+        //$permission = Permission::create(['name' => 'gallery-view']);
+        //$permission = Permission::create(['name' => 'gallery-edit']);
+        //$permission = Permission::create(['name' => 'gallery-delete']);
+        //return $permission;
+        $user = User::where('name','Spandan Chatterjee')->first();
+        $user->getAllPermissions();
+        $user->getRoleNames();
         return $user;
     }
 }

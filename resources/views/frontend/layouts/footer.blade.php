@@ -12,8 +12,8 @@
                         <div class="our-company-info">
                             <div class="footer-logo-style1">
                                 <a href="index.html">
-                                    <img src={{asset("public/frontend/assets/images/footer/footer-logo-1.png")}} alt="Awesome Logo"
-                                        title="">
+                                    <img src={{asset("public/frontend/assets/images/logo.jpeg")}} alt="Awesome Logo"
+                                        title="" class="logo-round">
                                 </a>
                             </div>
                             <div class="our-company-info__text">
@@ -90,7 +90,7 @@
                                         <span class="icon-pin"></span>
                                     </div>
                                     <div class="text">
-                                        <p>New Hyde Park, NY 11040</p>
+                                        <p>14, N.S.C. Road, South 24 Parganas, Jaynagar Mazilpur, West Bengal 743337</p>
                                     </div>
                                 </li>
 
@@ -99,7 +99,7 @@
                                         <span class="icon-mail-1"></span>
                                     </div>
                                     <div class="text">
-                                        <p><a href="mailto:yourmail@email.com">example@govarnex.com</a></p>
+                                        <p><a href="mailto:info@jmmunicipality.co.in">info@jmmunicipality.co.in</a></p>
                                     </div>
                                 </li>
 

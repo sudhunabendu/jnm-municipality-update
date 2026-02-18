@@ -986,8 +986,8 @@
                             <!--Start Fact Counter Style1 Counter Box Single-->
                             <li class="fact-counter-style1__counter-box-single text-center">
                                 <div class="counter-box">
-                                    <h2 class="odometer" data-count="4.2">00</h2>
-                                    <span class="text">M</span>
+                                    <h2 class="odometer" data-count="26">00</h2>
+                                    <span class="text">K</span>
                                 </div>
                                 <div class="title">
                                     <p>Total People Lived <br>in Our City</p>
@@ -1220,143 +1220,42 @@
             </div>
             <div class="row">
                 <!--Start Team Style1 Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".1s">
-                    <div class="team-style1__single">
-                        <div class="team-style1__single-img">
-                            <div class="team-style1__single-img-inner">
-                                <img src={{ asset('public/frontend/assets/images/team/team-v1-img1.jpg') }}
-                                    alt="#">
+                @foreach ($councillor as $item)
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".1s">
+                        <div class="team-style1__single">
+                            <div class="team-style1__single-img">
+                                <div class="team-style1__single-img-inner">
+                                    <img src={{ asset('public/images/councillor_images/' . $item->image) }}
+                                        alt="#">
+                                </div>
+
+                                <ul class="social-links clearfix">
+                                    <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
+                                    </li>
+                                    <li class="share"><a href="#"><span class="icon-share"></span></a>
+                                        <ul class="social-links-inner">
+                                            <li><a href="#"><i class="icon-instagram"></i></a></li>
+                                            <li><a href="#"><i class="icon-twitter"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
+                                </ul>
                             </div>
 
-                            <ul class="social-links clearfix">
-                                <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
-                                </li>
-                                <li class="share"><a href="#"><span class="icon-share"></span></a>
-                                    <ul class="social-links-inner">
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="team-stye1__single-content text-center">
-                            <div class="inner-box">
-                                <div class="round-bg"></div>
-                                <h2><a href="team-details.html">Robert Gates</a></h2>
-                                <p>Ambassador</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Team Style1 Single-->
-
-                <!--Start Team Style1 Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="team-style1__single">
-                        <div class="team-style1__single-img">
-                            <div class="team-style1__single-img-inner">
-                                <img src={{ asset('public/frontend/assets/images/team/team-v1-img2.jpg') }}
-                                    alt="#">
-                            </div>
-
-                            <ul class="social-links clearfix">
-                                <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
-                                </li>
-                                <li class="share"><a href="#"><span class="icon-share"></span></a>
-                                    <ul class="social-links-inner">
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="team-stye1__single-content text-center">
-                            <div class="inner-box">
-                                <div class="round-bg"></div>
-                                <h2><a href="team-details.html">Nicholas Cage</a></h2>
-                                <p>Director</p>
+                            <div class="team-stye1__single-content text-center">
+                                <div class="inner-box">
+                                    <div class="round-bg"></div>
+                                    <h2><a href="team-details.html">{{$item->first_name . ' ' . $item->last_name}}</a></h2>
+                                    <p>{{$item->position}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--End Team Style1 Single-->
+                @endforeach
 
-                <!--Start Team Style1 Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="team-style1__single">
-                        <div class="team-style1__single-img">
-                            <div class="team-style1__single-img-inner">
-                                <img src={{ asset('public/frontend/assets/images/team/team-v1-img3.jpg') }}
-                                    alt="#">
-                            </div>
 
-                            <ul class="social-links clearfix">
-                                <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
-                                </li>
-                                <li class="share"><a href="#"><span class="icon-share"></span></a>
-                                    <ul class="social-links-inner">
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="team-stye1__single-content text-center">
-                            <div class="inner-box">
-                                <div class="round-bg"></div>
-                                <h2><a href="team-details.html">Keanu Reeves</a></h2>
-                                <p>Mayor Assistant</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Team Style1 Single-->
-
-                <!--Start Team Style1 Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="team-style1__single">
-                        <div class="team-style1__single-img">
-                            <div class="team-style1__single-img-inner">
-                                <img src={{ asset('public/frontend/assets/images/team/team-v1-img4.jpg') }}
-                                    alt="#">
-                            </div>
-
-                            <ul class="social-links clearfix">
-                                <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
-                                </li>
-                                <li class="share"><a href="#"><span class="icon-share"></span></a>
-                                    <ul class="social-links-inner">
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="team-stye1__single-content text-center">
-                            <div class="inner-box">
-                                <div class="round-bg"></div>
-                                <h2><a href="team-details.html">Brendan Fraser</a></h2>
-                                <p>Council Member</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!--End Team Style1 Single-->
             </div>
         </div>

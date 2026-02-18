@@ -69,9 +69,10 @@
                     <div class="about-style2__content">
                         <div class="sec-title">
                             <div class="sub-title">
-                                <h6>About Jaynagar Majilpur</h6>
+                                <h6>About</h6>
                             </div>
                             <h2>Welcome & Support <br> To Jaynagar Majilpur Municipality</h2>
+                            {{--  {{$total}} {{$today}} --}}
                         </div>
                         <div class="about-style2__content-text">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec felis, suscipit mi
@@ -147,9 +148,130 @@
                         <tr>
                             <td>1</td>
                             <td>Sukumar Halder</td>
-                            <td>0000-0000</td>
+                            <td>(2022–Present)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Sujit Sarkhel</td>
+                            <td>(2015–2022)</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Farida Begum Shaikh</td>
+                            <td>(2010–2015)</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Prashanta Sarkhel</td>
+                            <td>(2005–2010)</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Jalal Uddin Khan</td>
+                            <td>(2002–2005)</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Prashanta Sarkhel</td>
+                            <td>(1981–2002)</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Monoranjan Dutta</td>
+                            <td>(1968–1981)</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Prasun Kumar Ghosh</td>
+                            <td>(1966–1968)</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Sudhir Krishna Dutta</td>
+                            <td>(1964–1966)</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Hirendra Nath Mitra</td>
+                            <td>(1959–1964)</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Birendra Nath Bhattacharya</td>
+                            <td>(1958–1959)</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Sudhir Krishna Dutta</td>
+                            <td>(1939–1958)</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Paramananda Dutta</td>
+                            <td>(1936–1939)</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Rampada Chatterjee</td>
+                            <td>(1935–1936)</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Bhutnath Chakraborty</td>
+                            <td>(1929–1935)</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>Surendra Nath Mitra</td>
+                            <td>(1924–1929)</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>Nakuleshwar Basu</td>
+                            <td>(1919–1924)</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Khetra Nath Mitra</td>
+                            <td>(1916–1919)</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>Bipin Bihari Dey</td>
+                            <td>(1904–1916)</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td>Binoy Krishna Dutta</td>
+                            <td>(1903–1904)</td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td>Biraj Krishna Dutta</td>
+                            <td>(1902–1903)</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>Jogindra Nath Mitra</td>
+                            <td>(1900–1902)</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>Ananda Chandra Ghosh</td>
+                            <td>(1886–1900)</td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td>Haridas Dutta</td>
+                            <td>(1882–1886)</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>Harananda Vidyasagar</td>
+                            <td>(1869–1882)</td>
                         </tr>
                     </tbody>
+
                 </table>
             </div>
         </div>

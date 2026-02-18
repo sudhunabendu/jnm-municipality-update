@@ -8,11 +8,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">Add Councillor</h4>
+                <h4 class="mb-sm-0 font-size-18">Add User</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">Jmmunicipality</a></li>
-                        <li class="breadcrumb-item active">Add Councillor</li>
+                        <li class="breadcrumb-item active">Add User</li>
                     </ol>
                 </div>
             </div>
@@ -27,17 +27,22 @@
                     <h4 class="card-title">Basic Information</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.councillors.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.users.create') }}" method="POST">
                         @csrf
                         <div class="row">
                             <!-- Title -->
+                            <!-- Type -->
                             <div class="col-sm-6">
                                 <div class="mb-3">
-                                    <label for="first_name">First Name <span style="color:red">*</span></label>
-                                    <input id="first_name" name="first_name" type="text"
-                                        class="form-control @error('first_name') is-invalid @enderror"
-                                        placeholder="Enter First Name" value="{{ old('first_name') }}">
-                                    @error('first_name')
+                                    <label class="control-label">Role Type <span style="color:red">*</span></label>
+                                    <select class="form-control select2 @error('role') is-invalid @enderror" name="role">
+                                        <option value="">Select Role</option>
+                                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                        <option value="employee" {{ old('role') == 'employee' ? 'selected' : '' }}>Employee
+                                        </option>
+                                        <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                                    </select>
+                                    @error('role')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -46,11 +51,11 @@
                             <!-- Content -->
                             <div class="col-sm-6">
                                 <div class="mb-3">
-                                    <label for="last_name">Last Name <span style="color:red">*</span></label>
-                                    <input id="last_name" name="last_name" type="text"
-                                        class="form-control @error('last_name') is-invalid @enderror"
-                                        placeholder="Enter Last Name" value="{{ old('last_name') }}">
-                                    @error('last_name')
+                                    <label for="name">Full Name <span style="color:red">*</span></label>
+                                    <input id="name" name="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror"
+                                        placeholder="Enter Last Name" value="{{ old('name') }}">
+                                    @error('name')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -70,55 +75,58 @@
                             </div>
 
 
+                            {{-- <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="password">Password <span style="color:red">*</span></label>
+                                    <input id="password" name="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        placeholder="Enter User Password" value="{{ old('password') }}">
+                                    @error('password')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div> --}}
+
                             <div class="col-sm-6">
                                 <div class="mb-3">
-                                    <label for="phone">Mobile Number <span style="color:red">*</span></label>
-                                    <input id="phone" name="phone" type="text"
-                                        class="form-control @error('phone') is-invalid @enderror"
-                                        placeholder="Councillor Mobile Number" value="{{ old('phone') }}">
-                                    @error('phone')
+                                    <label for="password">Password <span style="color:red">*</span></label>
+
+                                    <div class="input-group">
+                                        <input id="password" name="password" type="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="Enter User Password" value="{{ old('password') }}">
+
+                                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">
+                                            <i id="toggleIcon" class="fa fa-eye"></i>
+                                        </button>
+                                    </div>
+
+                                    @error('password')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="control-label">Select Permissions</label>
 
+                                <div class="row">
+                                    @foreach ($permissions as $permission)
+                                        <div class="col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="permissions[]"
+                                                    value="{{ $permission->name }}" id="perm_{{ $permission->id }}"
+                                                    {{ in_array($permission->name, old('permissions', [])) ? 'checked' : '' }}>
 
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="position">Position <span style="color:red">*</span></label>
-                                    <input id="position" name="position" type="text"
-                                        class="form-control @error('position') is-invalid @enderror"
-                                        placeholder="Councillor Position" value="{{ old('position') }}">
-                                    @error('position')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
+                                                <label class="form-check-label" for="perm_{{ $permission->id }}">
+                                                    {{ ucfirst(str_replace('-', ' ', $permission->name)) }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                            </div>
 
-
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="word_number">Ward Number <span style="color:red">*</span></label>
-                                    <input id="word_number" name="word_number" type="text"
-                                        class="form-control @error('word_number') is-invalid @enderror"
-                                        placeholder="Enter Councillor Ward No." value="{{ old('word_number') }}">
-                                    @error('word_number')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-
-
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="image">Councillor Image </label>
-                                    <input type="file" name="image"
-                                        class="form-control @error('image') is-invalid @enderror"
-                                        placeholder="Upload Image File">
-                                    @error('image')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
                             </div>
                         </div>
 
@@ -175,6 +183,23 @@
                 x--;
             });
         });
+    </script>
+
+    <script>
+        function togglePassword() {
+            const password = document.getElementById("password");
+            const icon = document.getElementById("toggleIcon");
+
+            if (password.type === "password") {
+                password.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                password.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
     </script>
 @endsection
 @endsection

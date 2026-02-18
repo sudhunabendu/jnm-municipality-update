@@ -7,6 +7,8 @@ use App\Models\Banner;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Council;
+use App\Models\Visitor;
 
 class HomeController extends Controller
 {
@@ -14,8 +16,9 @@ class HomeController extends Controller
     {
         $banners = Banner::all();
         $newsEvents = News::orderBy('event_date', 'desc')->get();
+        $councillor = Council::all();
         if ($banners || $newsEvents) {
-            return view('frontend.home.index', compact('banners', 'newsEvents'));
+            return view('frontend.home.index', compact('banners', 'newsEvents','councillor'));
         }
     }
 
@@ -50,7 +53,9 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('frontend.about.index');
+        $total = Visitor::count();
+        $today = Visitor::whereDate('created_at', today())->count();
+        return view('frontend.about.index',compact('total','today'));
     }
 
 

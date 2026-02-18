@@ -94,6 +94,8 @@
     {{-- <script src={{asset("public/dason/js/pages/dashboard.init.js")}}></script> --}}
     <script src={{ asset('public/dason/js/app.js') }}></script>
     <script src="{{ asset('public/dason/js/jquery.alphanum.js')}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     @yield('bannerJS')
     @yield('roleJS')
     @yield('news_eventsJS')
