@@ -12,13 +12,12 @@
                         <div class="our-company-info">
                             <div class="footer-logo-style1">
                                 <a href="index.html">
-                                    <img src={{asset("public/frontend/assets/images/footer/footer-logo-1.png")}} alt="Awesome Logo"
-                                        title="">
+                                    <img src={{asset("public/frontend/assets/images/logo.jpeg")}} alt="Awesome Logo"
+                                        title="" class="logo-round">
                                 </a>
                             </div>
                             <div class="our-company-info__text">
-                                <p>Tincidunt neque pretium lectus donec risus. Mauris mi tempor nunc orc leo
-                                    consequat vitae erat gravida lobortis nec et sagittis.</p>
+                                <p>14, N.S.C. Road, South 24 Parganas, Jaynagar Mazilpur, West Bengal 743337</p>
                             </div>
                             <ul class="our-company-info__social-link">
                                 <li>
@@ -91,7 +90,7 @@
                                         <span class="icon-pin"></span>
                                     </div>
                                     <div class="text">
-                                        <p>New Hyde Park, NY 11040</p>
+                                        <p>14, N.S.C. Road, South 24 Parganas, Jaynagar Mazilpur, West Bengal 743337</p>
                                     </div>
                                 </li>
 
@@ -100,7 +99,7 @@
                                         <span class="icon-mail-1"></span>
                                     </div>
                                     <div class="text">
-                                        <p><a href="mailto:yourmail@email.com">example@govarnex.com</a></p>
+                                        <p><a href="mailto:info@jmmunicipality.co.in">info@jmmunicipality.co.in</a></p>
                                     </div>
                                 </li>
 
@@ -126,7 +125,7 @@
         <div class="container">
             <div class="bottom-inner text-center">
                 <div class="copyright">
-                    <p>Copyright 2023 by <a href="#">govarnex</a> All Right Reserved.</p>
+                    <p>Copyright 2025 by <a href="#">Jaynagar Majilpur Municipality</a> All Right Reserved.</p>
                 </div>
             </div>
         </div>

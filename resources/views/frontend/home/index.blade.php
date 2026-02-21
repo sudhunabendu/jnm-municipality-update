@@ -27,7 +27,9 @@
                         @endphp
                         @if (!empty($images) && is_array($images))
                             @foreach ($images as $image)
-                                <div class="image-layer" style="background-image: url('{{ asset('public/images/banner_images/' . $image) }}');" class="slider-image">
+                                <div class="image-layer"
+                                    style="background-image: url('{{ asset('public/images/banner_images/' . $image) }}');"
+                                    class="slider-image">
                                 </div>
                             @endforeach
                         @endif
@@ -244,166 +246,77 @@
     <!--End About Style1-->
 
     <!--Start Services Style1-->
-    <section class="services-style1">
-        <div class="shape1"></div>
-        <div class="shape2 rotate-me"><img src="assets/images/shapes/services-v1-shape1.png" alt="#">
+    {{-- <section class="services-style1">
+        <h3>Notice Board</h3>
+    </section> --}}
+    <section class="news-events-section">
+        <div class="section-header text-center">
+            <h3><span class="icon">📰</span> News & Events</h3>
         </div>
-        <div class="shape3 float-bob-y"><img src="assets/images/shapes/services-v1-shape2.png" alt="#">
-        </div>
-        <div class="shape4"><img src="assets/images/shapes/services-v1-shape3.png" alt="#"></div>
-        <div class="auto-container">
-            <div class="sec-title text-center">
-                <div class="sub-title">
-                    <h6>EFFICIENCY - OPPORTUNITY</h6>
+
+        <div class="news-events-container">
+            <!-- Left: Image Carousel -->
+
+            {{-- <div class="image-carousel">
+                @if ($newsEvents && count($newsEvents) > 0)
+                    @foreach ($newsEvents as $newsEvent)
+                        @if ($newsEvent->type == 'event')
+                            <div class="carousel-inner">
+
+                                <img src="{{ asset('public/images/news/' . $newsEvent->image) }}" alt="Event 1"
+                                    class="active">
+                                <img src="{{ asset('public/frontend/assets/images/news/event2.jpg') }}" alt="Event 2">
+                                <img src="{{ asset('public/frontend/assets/images/news/event3.jpg') }}" alt="Event 3">
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+                <div class="carousel-controls">
+                    <button class="prev-btn">
+                        << /button>
+                            <button class="next-btn">></button>
                 </div>
-                <h2>City Municipality Services <br>And Departments</h2>
+            </div> --}}
+            <div class="image-carousel">
+                @php
+                    $eventImages = $newsEvents->where('type', 'event')->whereNotNull('image');
+                @endphp
+                @if ($eventImages->count() > 0)
+                    <div class="carousel-inner">
+                        @foreach ($eventImages as $index => $newsEvent)
+                            <img src="{{ asset('public/images/news/' . $newsEvent->image) }}"
+                                alt="{{ $newsEvent->title }}" class="{{ $index == 0 ? 'active' : '' }}">
+                        @endforeach
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="prev-btn">&lt;</button>
+                        <button class="next-btn">&gt;</button>
+                    </div>
+                @endif
             </div>
-            <div class="row">
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-5"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html"> Government And <br> Elections</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
 
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-6"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html">Employment And <br> Job Planning</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Right: News Ticker -->
+            <div class="news-ticker">
+                <div class="ticker-container">
+                    <ul class="ticker-list">
+                        @php
+                            $newsImages = $newsEvents->where('type', 'news');
+                        @endphp
+                        @if ($newsImages && count($newsImages) > 0)
+                            @foreach ($newsImages as $newsEvent)
+                                <li class="ticker-item">
+                                    <span class="date">
+                                        <h5>{{ \Carbon\Carbon::parse($newsEvent->event_date)->format('F d, Y') }}</h5>
+                                    </span>
+                                    <a href="{{ route('frontend.news_events.show', $newsEvent->slug) }}" target="_blank">
+                                        <p><strong>{{ $newsEvent->title ?? '' }}</strong> -
+                                            {{ Str::limit(strip_tags($newsEvent->content), 100) }}</p>
+                                    </a>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
                 </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-7"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html"> Real Estate And <br> Buildings</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="100ms"
-                    data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-16"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html"> Business Tax And <br> Finance</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-121"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html">Health & Medical <br> Department</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-9"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html">Finance & Legal <br> Department</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-10"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html">Park & Recreation <br> Department</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
-
-                <!--Start Services Style1 Single-->
-                <div class="col-xl-3 col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="100ms"
-                    data-wow-duration="1000ms">
-                    <div class="services-style1__single">
-                        <div class="services-style1__single-content text-center">
-                            <div class="services-style1__single-icon">
-                                <span class="icon-Group-11"></span>
-                            </div>
-                            <div class="services-style1__single-text">
-                                <h3><a href="departments-details.html"> Sidewalks, Parking <br> Highways</a></h3>
-                                <div class="btn-box">
-                                    <a href="departments-details.html"><span class="icon-right-arrow"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Services Style1 Single-->
             </div>
         </div>
     </section>
@@ -437,12 +350,13 @@
                             <div class="sub-title">
                                 <h6>Instant Services</h6>
                             </div>
-                            <h2>Quick Services From The <br> City Municipal</h2>
+                            <h2>Quick Services From The <br> Jaynagar Majilpur Municipality</h2>
                         </div>
 
                         <div class="instant-services-style1__content-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec felis, suscipit mi
-                                urna nulla at tincidunt feugiat vulputate.</p>
+                            <p>The municipality refers to the Board of Councillors, with one Councillor being elected from
+                                each of the 14 administrative wards of Jaynagar Majilpur city. The Board of Councillors
+                                elects a chairman from among its elected members.</p>
                         </div>
                         <div class="instant-services-style1__content-bottom">
                             <div class="row">
@@ -454,7 +368,7 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Holiday Trash & Recycling</a>
+                                                    <a href="#">Water purification and supply</a>
                                                 </div>
                                             </li>
 
@@ -463,7 +377,7 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Things To Do In Govarnex</a>
+                                                    <a href="#">Sewage treatment and disposal</a>
                                                 </div>
                                             </li>
 
@@ -472,7 +386,8 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Rent a Picnic Shelter</a>
+                                                    <a href="#">Garbage disposal and street cleanliness
+                                                    </a>
                                                 </div>
                                             </li>
 
@@ -481,7 +396,7 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Contact City Action Center</a>
+                                                    <a href="#">Food Inspection: Through JMM Food Inspectors</a>
                                                 </div>
                                             </li>
 
@@ -490,7 +405,15 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Youth Activities Details</a>
+                                                    <a href="#">Solid waste management</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Cemeteries and Crematoriums</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -505,7 +428,8 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Fishing or Boating Permit</a>
+                                                    <a href="#">Building and maintenance of roads, streets and
+                                                        flyovers</a>
                                                 </div>
                                             </li>
 
@@ -514,7 +438,7 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <a href="#">Get a Birth / Death Certificate
+                                                    <a href="#">Registering of births and deaths
                                                     </a>
                                                 </div>
                                             </li>
@@ -534,6 +458,24 @@
                                                 </div>
                                                 <div class="text">
                                                     <a href="#">Apply for Submit a Tax Papers
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Conservation of heritage sites
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Disease control, including immunisation
                                                     </a>
                                                 </div>
                                             </li>
@@ -1044,8 +986,8 @@
                             <!--Start Fact Counter Style1 Counter Box Single-->
                             <li class="fact-counter-style1__counter-box-single text-center">
                                 <div class="counter-box">
-                                    <h2 class="odometer" data-count="4.2">00</h2>
-                                    <span class="text">M</span>
+                                    <h2 class="odometer" data-count="26">00</h2>
+                                    <span class="text">K</span>
                                 </div>
                                 <div class="title">
                                     <p>Total People Lived <br>in Our City</p>
@@ -1237,35 +1179,35 @@
     </section>
     <!--End Events Style1-->
 
-<!--Start Video Style1-->
-<section class="video-style1">
-    <div class="video-style1__bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-        style="background-image: url(assets/images/backgrounds/video-v1-bg.jpg);">
-    </div>
-    <div class="auto-container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="video-style1__inner">
-                    <div class="sec-title text-center">
-                        <div class="sub-title">
-                            <h6>EFFICIENCY - OPPORTUNITY</h6>
-                        </div>
-                        <h2>City Municipality Services <br> And Departments</h2>
-                    </div>
-                    <div class="video-box">
-                        <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
-                            <div class="video-style1__video-icon">
-                                <span class="icon-play"></span>
-                                <i class="ripple"></i>
+    <!--Start Video Style1-->
+    <section class="video-style1">
+        <div class="video-style1__bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+            style="background-image: url(assets/images/backgrounds/video-v1-bg.jpg);">
+        </div>
+        <div class="auto-container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="video-style1__inner">
+                        <div class="sec-title text-center">
+                            <div class="sub-title">
+                                <h6>EFFICIENCY - OPPORTUNITY</h6>
                             </div>
-                        </a>
+                            <h2>City Municipality Services <br> And Departments</h2>
+                        </div>
+                        <div class="video-box">
+                            <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
+                                <div class="video-style1__video-icon">
+                                    <span class="icon-play"></span>
+                                    <i class="ripple"></i>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!--End Video Style1-->
+    </section>
+    <!--End Video Style1-->
 
     <!--Start Team Style1-->
     <section class="team-style1">
@@ -1278,143 +1220,42 @@
             </div>
             <div class="row">
                 <!--Start Team Style1 Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".1s">
-                    <div class="team-style1__single">
-                        <div class="team-style1__single-img">
-                            <div class="team-style1__single-img-inner">
-                                <img src={{ asset('public/frontend/assets/images/team/team-v1-img1.jpg') }}
-                                    alt="#">
+                @foreach ($councillor as $item)
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".1s">
+                        <div class="team-style1__single">
+                            <div class="team-style1__single-img">
+                                <div class="team-style1__single-img-inner">
+                                    <img src={{ asset('public/images/councillor_images/' . $item->image) }}
+                                        alt="#">
+                                </div>
+
+                                <ul class="social-links clearfix">
+                                    <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
+                                    </li>
+                                    <li class="share"><a href="#"><span class="icon-share"></span></a>
+                                        <ul class="social-links-inner">
+                                            <li><a href="#"><i class="icon-instagram"></i></a></li>
+                                            <li><a href="#"><i class="icon-twitter"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
+                                </ul>
                             </div>
 
-                            <ul class="social-links clearfix">
-                                <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
-                                </li>
-                                <li class="share"><a href="#"><span class="icon-share"></span></a>
-                                    <ul class="social-links-inner">
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="team-stye1__single-content text-center">
-                            <div class="inner-box">
-                                <div class="round-bg"></div>
-                                <h2><a href="team-details.html">Robert Gates</a></h2>
-                                <p>Ambassador</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Team Style1 Single-->
-
-                <!--Start Team Style1 Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="team-style1__single">
-                        <div class="team-style1__single-img">
-                            <div class="team-style1__single-img-inner">
-                                <img src={{ asset('public/frontend/assets/images/team/team-v1-img2.jpg') }}
-                                    alt="#">
-                            </div>
-
-                            <ul class="social-links clearfix">
-                                <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
-                                </li>
-                                <li class="share"><a href="#"><span class="icon-share"></span></a>
-                                    <ul class="social-links-inner">
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="team-stye1__single-content text-center">
-                            <div class="inner-box">
-                                <div class="round-bg"></div>
-                                <h2><a href="team-details.html">Nicholas Cage</a></h2>
-                                <p>Director</p>
+                            <div class="team-stye1__single-content text-center">
+                                <div class="inner-box">
+                                    <div class="round-bg"></div>
+                                    <h2><a href="team-details.html">{{$item->first_name . ' ' . $item->last_name}}</a></h2>
+                                    <p>{{$item->position}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--End Team Style1 Single-->
+                @endforeach
 
-                <!--Start Team Style1 Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="team-style1__single">
-                        <div class="team-style1__single-img">
-                            <div class="team-style1__single-img-inner">
-                                <img src={{ asset('public/frontend/assets/images/team/team-v1-img3.jpg') }}
-                                    alt="#">
-                            </div>
 
-                            <ul class="social-links clearfix">
-                                <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
-                                </li>
-                                <li class="share"><a href="#"><span class="icon-share"></span></a>
-                                    <ul class="social-links-inner">
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="team-stye1__single-content text-center">
-                            <div class="inner-box">
-                                <div class="round-bg"></div>
-                                <h2><a href="team-details.html">Keanu Reeves</a></h2>
-                                <p>Mayor Assistant</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End Team Style1 Single-->
-
-                <!--Start Team Style1 Single-->
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="team-style1__single">
-                        <div class="team-style1__single-img">
-                            <div class="team-style1__single-img-inner">
-                                <img src={{ asset('public/frontend/assets/images/team/team-v1-img4.jpg') }}
-                                    alt="#">
-                            </div>
-
-                            <ul class="social-links clearfix">
-                                <li><a href="mailto:yourmail@email.com"><span class="icon-mail-1"></span></a>
-                                </li>
-                                <li class="share"><a href="#"><span class="icon-share"></span></a>
-                                    <ul class="social-links-inner">
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-twitter"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="icon-facebook-app-symbol"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="tel:1234567890"><span class="icon-telephone"></span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="team-stye1__single-content text-center">
-                            <div class="inner-box">
-                                <div class="round-bg"></div>
-                                <h2><a href="team-details.html">Brendan Fraser</a></h2>
-                                <p>Council Member</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!--End Team Style1 Single-->
             </div>
         </div>
@@ -1422,21 +1263,21 @@
     <!--End Team Style1-->
 
 
-<!--Start Cta Style1-->
-<section class="cta-style1">
-    <div class="cta-style1__bg" style="background-image: url(assets/images/backgrounds/cta-v1-bg.png);"></div>
-    <div class="auto-container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="cta-style1__inner">
-                    <div class="cta-style1__title">
-                        <div class="sec-title">
-                            <div class="sub-title">
-                                <h6>Become Volunteer</h6>
+    <!--Start Cta Style1-->
+    <section class="cta-style1">
+        <div class="cta-style1__bg" style="background-image: url(assets/images/backgrounds/cta-v1-bg.png);"></div>
+        <div class="auto-container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="cta-style1__inner">
+                        <div class="cta-style1__title">
+                            <div class="sec-title">
+                                <div class="sub-title">
+                                    <h6>Become Volunteer</h6>
+                                </div>
+                                <h2>Become a Volunteer, Service to Our <br> City, & Make Difference!</h2>
                             </div>
-                            <h2>Become a Volunteer, Service to Our <br> City, & Make Difference!</h2>
                         </div>
-                    </div>
 
                         <div class="cta-style1__btn">
                             <a class="btn-one" href="#">
@@ -1602,4 +1443,47 @@
         </div>
     </section>
     <!--End Blog Style1-->
+@endsection
+
+@section('namespace_js')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll('.carousel-inner img');
+            let index = 0;
+
+            function showImage(i) {
+                images.forEach(img => img.classList.remove('active'));
+                images[i].classList.add('active');
+            }
+
+            function next() {
+                index = (index + 1) % images.length;
+                showImage(index);
+            }
+
+            function prev() {
+                index = (index - 1 + images.length) % images.length;
+                showImage(index);
+            }
+
+            // Auto-slide
+            setInterval(next, 5000);
+
+            // Manual buttons
+            document.querySelector('.next-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                next();
+            });
+
+            document.querySelector('.prev-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                prev();
+            });
+
+            // Start
+            showImage(index);
+        });
+    </script>
 @endsection

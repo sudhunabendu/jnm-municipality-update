@@ -2,18 +2,17 @@
 <html lang="en">
 
 
-<!-- Mirrored from mehedi.asiandevelopers.com/govarnex-demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Feb 2025 05:41:06 GMT -->
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jaynagar Municipality</title>
+    <title>Jaynagar Majilpur Municipality</title>
     <!-- Favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href={{asset("public/frontend/assets/images/favicons/apple-touch-icon.png")}} />
     <link rel="icon" type="image/png" sizes="32x32" href={{asset("public/frontend/assets/images/favicons/favicon-32x32.png")}} />
     <link rel="icon" type="image/png" sizes="16x16" href={{asset("public/frontend/assets/images/favicons/favicon-16x16.png")}} />
     <link rel="manifest" href={{asset("public/frontend/assets/images/favicons/site.webmanifest")}} />
-    <meta name="description" content="Govarnex HTML 5 Template " />
+    <meta name="description" content="Jaynagar Majilpur Municipality" />
 
     <!-- fonts -->
     @include('frontend.layouts.cssLink')
@@ -28,7 +27,7 @@
             visibility: hidden;
         } */
 
-        
+
     </style>
     <style>
         .carousel-item img {
@@ -36,6 +35,13 @@
             height: 500px; /* Adjust height as needed */
             object-fit: cover; /* Ensures image covers the area */
         }
+
+        .logo-round {
+    width: 120px;      /* must be equal width & height */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover; /* prevents image stretching */
+}
     </style>
 </head>
 
@@ -174,7 +180,7 @@
         <i class="icon-down-arrow"></i>
     </a>
     @include('frontend.layouts.jsLink')
-   
+    @yield('namespace_js')
 </body>
 
 </html>

@@ -12,15 +12,40 @@
                         {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
                         <span data-key="t-dashboard">Dashboard</span>
                     </a>
+                    <a href="{{route('admin.roles')}}">
+                        <i data-feather="role"></i>
+                        {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
+                        <span data-key="t-dashboard">Roles</span>
+                    </a>
+                    <a href="{{route('admin.users')}}">
+                        <i data-feather="users"></i>
+                        {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
+                        <span data-key="t-dashboard">Users</span>
+                    </a>
                     <a href="{{route('admin.banners')}}">
                         <i data-feather="users"></i>
                         {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
                         <span data-key="t-dashboard">Banners</span>
                     </a>
+                    <a href="{{route('admin.gallery')}}">
+                        <i data-feather="image"></i>
+                        {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
+                        <span data-key="t-dashboard">Gallery</span>
+                    </a>
+                    <a href="{{route('admin.news_events')}}">
+                        <i data-feather="book"></i>
+                        {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
+                        <span data-key="t-dashboard">News & Events</span>
+                    </a>
                     <a href="{{route('admin.contacts')}}">
-                        <i data-feather="users"></i>
+                        <i data-feather="phone"></i>
                         {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
                         <span data-key="t-dashboard">Contacts</span>
+                    </a>
+                    <a href="{{route('admin.councillors')}}">
+                        <i data-feather="users"></i>
+                        {{-- <span class="badge rounded-pill bg-success-subtle text-success float-end">9+</span> --}}
+                        <span data-key="t-dashboard">Councillor</span>
                     </a>
                 </li>
 

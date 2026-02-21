@@ -6,12 +6,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">User List</h4>
+                <h4 class="mb-sm-0 font-size-18">Contact List</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Contacts</a></li>
-                        <li class="breadcrumb-item active">User List</li>
+                        <li class="breadcrumb-item active">Contact List</li>
                     </ol>
                 </div>
 
@@ -80,72 +80,37 @@
                                             <label class="form-check-label" for="checkAll"></label>
                                         </div>
                                     </th>
+                                    <th scope="col">SL No.</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Position</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Tags</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Subject</th>
+                                    <th scope="col">Message</th>
                                     <th style="width: 80px; min-width: 80px;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <?php $i=1 ?>
+                                @foreach ($contacts as $item)
+                                    <tr>
                                     <th scope="row">
                                         <div class="form-check font-size-16">
                                             <input type="checkbox" class="form-check-input" id="contacusercheck1">
                                             <label class="form-check-label" for="contacusercheck1"></label>
                                         </div>
                                     </th>
+                                    <td>{{$i++}}</td>
                                     <td>
-                                        <img src="assets/images/users/avatar-2.jpg" alt=""
-                                            class="avatar-sm rounded-circle me-2">
-                                        <a href="#" class="text-body">Phyllis Gatlin</a>
+                                        <a href="#" class="text-body">{{ $item->name ?? ""}}</a>
                                     </td>
-                                    <td>UI/UX Designer</td>
-                                    <td>phyllisgatlin@Dason.com</td>
+
+                                    <td>{{ $item->email ?? ""}}</td>
+                                     <td>{{ $item->phone ?? ""}}</td>
                                     <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#" class="badge bg-primary-subtle text-primary ">Photoshop</a>
-                                            <a href="#" class="badge bg-primary-subtle text-primary ">illustrator</a>
-                                        </div>
+                                        {{ $item->subject ?? ""}}
                                     </td>
                                     <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck2">
-                                            <label class="form-check-label" for="contacusercheck2"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <img src="assets/images/users/avatar-1.jpg" alt=""
-                                            class="avatar-sm rounded-circle me-2">
-                                        <a href="#" class="text-body">James Nix</a>
-                                    </td>
-                                    <td>Frontend Developer</td>
-                                    <td>jamesnix@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Html</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Css</a>
-                                            <a href="#" class="badge bg-primary-subtle text-primary  font-size-11">2
-                                                + more</a>
-                                        </div>
+                                        {{ $item->message ?? ""}}
                                     </td>
                                     <td>
                                         <div class="dropdown">
@@ -162,357 +127,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck3">
-                                            <label class="form-check-label" for="contacusercheck3"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <img src="assets/images/users/avatar-3.jpg" alt=""
-                                            class="avatar-sm rounded-circle me-2">
-                                        <a href="#" class="text-body">Darlene Smith</a>
-                                    </td>
-                                    <td>Backend Developer</td>
-                                    <td>darlenesmith@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Php</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Java</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Python</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck4">
-                                            <label class="form-check-label" for="contacusercheck4"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div class="avatar-sm d-inline-block align-middle me-2">
-                                            <div
-                                                class="avatar-title bg-primary-subtle text-primary font-size-20 m-0 rounded-circle">
-                                                <i class="bx bxs-user-circle"></i>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="text-body">William Swift</a>
-                                    </td>
-                                    <td>Full Stack Developer</td>
-                                    <td>williamswift@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Ruby</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Php</a>
-                                            <a href="#" class="badge bg-primary-subtle text-primary  font-size-11">2
-                                                + more</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck5">
-                                            <label class="form-check-label" for="contacusercheck5"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div class="avatar-sm d-inline-block align-middle me-2">
-                                            <div
-                                                class="avatar-title bg-primary-subtle text-primary font-size-20 m-0 rounded-circle">
-                                                <i class="bx bxs-user-circle"></i>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="text-body">Kevin West</a>
-                                    </td>
-                                    <td>Frontend Developer</td>
-                                    <td>kevinwest@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Html</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Css</a>
-                                            <a href="#" class="badge bg-primary-subtle text-primary  font-size-11">2
-                                                + more</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck6">
-                                            <label class="form-check-label" for="contacusercheck6"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <img src="assets/images/users/avatar-6.jpg" alt=""
-                                            class="avatar-sm rounded-circle me-2">
-                                        <a href="#" class="text-body">Tommy Hayes</a>
-                                    </td>
-                                    <td>UI/UX Designer</td>
-                                    <td>tommyhayes@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Photoshop</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">illustrator</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck7">
-                                            <label class="form-check-label" for="contacusercheck7"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <img src="assets/images/users/avatar-8.jpg" alt=""
-                                            class="avatar-sm rounded-circle me-2">
-                                        <a href="#" class="text-body">Diana Owens</a>
-                                    </td>
-                                    <td>Graphic Designer</td>
-                                    <td>dianaowens@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Photoshop</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">illustrator</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck8">
-                                            <label class="form-check-label" for="contacusercheck8"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <img src="assets/images/users/avatar-9.jpg" alt=""
-                                            class="avatar-sm rounded-circle me-2">
-                                        <a href="#" class="text-body">Paul Sanchez</a>
-                                    </td>
-                                    <td>Angular Developer</td>
-                                    <td>paulsanchez@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Php</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Javascript</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck9">
-                                            <label class="form-check-label" for="contacusercheck9"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <img src="assets/images/users/avatar-9.jpg" alt=""
-                                            class="avatar-sm rounded-circle me-2">
-                                        <a href="#" class="text-body">Peter Dryer</a>
-                                    </td>
-                                    <td>Web Designer</td>
-                                    <td>peterdryer@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Html</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Css</a>
-                                            <a href="#" class="badge bg-primary-subtle text-primary  font-size-11">2
-                                                + more</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck10">
-                                            <label class="form-check-label" for="contacusercheck10"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <img src="assets/images/users/avatar-4.jpg" alt=""
-                                            class="avatar-sm rounded-circle me-2">
-                                        <a href="#" class="text-body">Gerald Moyer</a>
-                                    </td>
-                                    <td>Backend Developer</td>
-                                    <td>geraldmoyer@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Php</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Javascript</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck11">
-                                            <label class="form-check-label" for="contacusercheck11"></label>
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <img src="assets/images/users/avatar-2.jpg" alt=""
-                                            class="avatar-sm rounded-circle me-2">
-                                        <a href="#" class="text-body">Gail McGuire</a>
-                                    </td>
-                                    <td>Backend Developer</td>
-                                    <td>gailmcGuire@Dason.com</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Php</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">Javascript</a>
-                                            <a href="#"
-                                                class="badge bg-primary-subtle text-primary  font-size-11">2+ more</a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
                         <!-- end table -->

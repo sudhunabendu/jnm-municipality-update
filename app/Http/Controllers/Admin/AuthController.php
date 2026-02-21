@@ -7,6 +7,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 class AuthController extends Controller
 {
@@ -55,5 +58,30 @@ class AuthController extends Controller
         $data->password = Hash::make("password");
         $data->status = 'Active';
         $data->save();
+    }
+
+
+    public function createRole(){
+        $role = Role::create(['name' => 'user']);
+        return $role;
+    }
+
+    public function assignRole(){
+        $user = User::find(1);
+        $user->assignRole('super-admin');
+        return $user;
+    }
+
+
+    public function createPermission(){
+        //$permission = Permission::create(['name' => 'gallery-create']);
+        //$permission = Permission::create(['name' => 'gallery-view']);
+        //$permission = Permission::create(['name' => 'gallery-edit']);
+        //$permission = Permission::create(['name' => 'gallery-delete']);
+        //return $permission;
+        $user = User::where('name','Spandan Chatterjee')->first();
+        $user->getAllPermissions();
+        $user->getRoleNames();
+        return $user;
     }
 }

@@ -2,8 +2,12 @@
 
 // use App\Http\Controllers\Admin\AuthController;
 
+use App\Http\Controllers\Admin\GalleryController as ControllersGalleryController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\FrontEnd\ContactController;
+use App\Http\Controllers\FrontEnd\GalleryController;
 use App\Http\Controllers\FrontEnd\HomeController;
+use App\Http\Controllers\Admin\CouncilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +29,16 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[HomeController::class,'about'])->name('about');
 Route::get('/contact-us',[ContactController::class,'contact'])->name('contact-us');
 Route::get('/history',[HomeController::class,'history'])->name('history');
+Route::get('/gallery',[GalleryController::class,'index'])->name('gallery');
 Route::post('/contact-us/store',[ContactController::class,'storeContact'])->name('contact-us.store');
+
+Route::get('/news-events/{newsEvent}',[HomeController::class,'show'])->name('frontend.news_events.show');
+
+
+Route::get('/category',[HomeController::class,'category'])->name('category');
+
+Route::get('/role-create',[App\Http\Controllers\Admin\AuthController::class,'createRole']);
+Route::get('/permission-create',[App\Http\Controllers\Admin\AuthController::class,'createPermission']);
 
 
 Route::prefix("admin")->group(function () {
@@ -44,6 +57,35 @@ Route::prefix("admin")->group(function () {
         Route::get('/dashboard/banners/edit/{id}', [App\Http\Controllers\Admin\BannerController::class,'editBanner'])->name('admin.banners.edit');
         Route::post('/dashboard/banners/update/{id}', [App\Http\Controllers\Admin\BannerController::class,'updateBanner'])->name('admin.banners.update');
         Route::get('/dashboard/banners/delete/{id}', [App\Http\Controllers\Admin\BannerController::class,'deleteBanner'])->name('admin.banners.delete');
+
+        // Gallery Routes
+        Route::get('/dashboard/gallery', [ControllersGalleryController::class,'index'])->name('admin.gallery');
+        Route::get('/dashboard/gallery/add', [ControllersGalleryController::class,'addGallery'])->name('admin.gallery.add');
+        Route::post('/dashboard/gallery/store', [ControllersGalleryController::class,'createGallery'])->name('admin.gallery.store');
+
+        // News & Events Routes
+        Route::get('/news-events', [NewsController::class, 'index'])->name('admin.news_events');
+        Route::get('/news-events/add', [NewsController::class, 'create'])->name('admin.news_events.add');
+        Route::post('/news-events/store', [NewsController::class, 'store'])->name('admin.news_events.store');
+        Route::get('/news-events/{newsEvent}', [NewsController::class, 'show'])->name('admin.news_events.show');
+
+
+        //Role Management
+        Route::get('/roles', [App\Http\Controllers\Admin\RoleController::class,'index'])->name('admin.roles');
+        Route::get('/roles/add', [App\Http\Controllers\Admin\RoleController::class,'addRole'])->name('admin.roles.add');
+        Route::post('/roles/create', [App\Http\Controllers\Admin\RoleController::class,'createRole'])->name('admin.roles.create');
+
+
+        //Councillor Management
+        Route::get('/councillors', [CouncilController::class,'index'])->name('admin.councillors');
+        Route::get('/councillors/add', [CouncilController::class,'createCouncillor'])->name('admin.councillors.add');
+        Route::post('/councillors/create', [CouncilController::class,'storeCouncillor'])->name('admin.councillors.create');
+
+
+        //User Management
+        Route::get('/users', [App\Http\Controllers\Admin\UserController::class,'getUsers'])->name('admin.users');
+        Route::get('/users/add', [App\Http\Controllers\Admin\UserController::class,'createUser'])->name('admin.users.add')->middleware(['permission:user-create']);
+        Route::post('/users/create', [App\Http\Controllers\Admin\UserController::class,'storeUser'])->name('admin.users.create');
     });
 
 });

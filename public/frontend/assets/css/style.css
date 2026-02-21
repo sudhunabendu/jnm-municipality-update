@@ -6389,48 +6389,275 @@ History Timeline
     line-height: 1.8;
 }
 
+/* notice board css */
+
+/* === MOBILE-FIRST BASE STYLES === */
+/* === CONTAINER: MOBILE STACKED, DESKTOP ROW WITH ADJUSTED RATIOS === */
+
+.news-events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .news-events-container {
+        flex-direction: row;
+        height: 260px; /* Slightly taller for better visibility */
+        align-items: center;
+    }
+}
+
+/* === IMAGE CAROUSEL: BIGGER ON DESKTOP === */
+.image-carousel {
+    width: 100%;
+    height: 180px;
+    border: 1px solid #d1e5f6;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.carousel-inner img.active {
+    display: block;
+}
+
+.carousel-controls {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+}
+
+.carousel-controls button {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-controls button:hover {
+    background: #2c3e50;
+    color: white;
+}
+
+/* === NEWS TICKER: SLIMMER ON DESKTOP === */
+.news-ticker {
+    width: 100%;
+    height: 180px;
+    background: white;
+    border: 1px solid #d1e5f6;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.ticker-container {
+    height: 100%;
+    overflow: hidden;
+}
+
+.ticker-list {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    animation: scrollUp 20s linear infinite; /* Faster scroll, smaller items */
+}
+
+.news-ticker:hover .ticker-list {
+    animation-play-state: paused;
+}
+
+@keyframes scrollUp {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.ticker-item {
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 13px; /* Smaller font */
+    line-height: 1.3;
+    color: #444;
+}
+
+.ticker-item:last-child {
+    border-bottom: none;
+}
+
+.ticker-item .date {
+    display: block;
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 2px;
+}
+
+.ticker-item p {
+    margin: 0;
+    color: #333;
+}
+
+.ticker-item strong {
+    color: #1a1a2e;
+    font-weight: 600;
+}
+
+/* === DESKTOP LAYOUT: CAROUSEL 65%, TICKER 35% === */
+@media (min-width: 768px) {
+    .image-carousel {
+        flex: 3; /* Takes ~65% of width */
+        min-width: 300px;
+        height: 100%;
+    }
+
+    .news-ticker {
+        flex: 1.5; /* Takes ~35% of width */
+        height: 100%;
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    .carousel-controls {
+        padding: 0 16px;
+    }
+
+    .carousel-controls button {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .ticker-item {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .ticker-item .date {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 992px) {
+    .news-events-section {
+        padding: 24px;
+        margin: 40px auto;
+    }
+
+    .section-header h3 {
+        font-size: 24px;
+    }
+
+    .news-events-container {
+        height: 320px; /* Taller for better scrolling */
+        gap: 20px;
+    }
+
+    .image-carousel {
+        height: 100%;
+    }
+
+    .carousel-controls button {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .news-ticker {
+        height: 100%;
+        padding: 15px;
+    }
+
+    .ticker-item {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .ticker-item .date {
+        font-size: 12px;
+    }
+}
+/* end notice board design */
 
 
+/* Chairman css  Table */
+.chairman-table {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px 0;
+}
 
+.chairman-table th {
+    font-weight: 600;
+    color: #fff;
+    /* background-color: #1a1a2e; */
+    background-color: #0066CC;
+    text-align: center;
+}
 
+.chairman-table td {
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: middle;
+}
 
+.chairman-table tbody tr:nth-child(odd) {
+    background-color: #e3f2fd;
+}
 
+.chairman-table tbody tr:nth-child(even) {
+    background-color: #f3f7ff;
+}
 
+.chairman-table tbody tr:hover {
+    background-color: #bbdefb !important;
+    transition: background-color 0.3s ease;
+}
 
+.chairman-table td:first-child {
+    font-weight: 500;
+    width: 80px;
+}
 
+.chairman-table td:last-child {
+    width: 200px;
+    text-align: center;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*--------------------------------------------------------------
+.table-responsive {
+    overflow-x: auto;
+}
+/* End Chairman css */
+/*
 # End Css
 --------------------------------------------------------------*/

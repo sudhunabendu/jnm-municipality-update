@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 class DashboardController extends Controller
 {
@@ -12,7 +13,8 @@ class DashboardController extends Controller
     }
 
     public function contacts(){
-        return view('admin.contacts.index');
+        $contacts = Contact::all();
+        return view('admin.contacts.index',compact('contacts'));
     }
 
 }
