@@ -191,7 +191,7 @@
                                                 <a href="#">About</a>
                                                 <ul>
                                                     <li><a href="{{route('about')}}">About Our Municipality</a></li>
-                                                    <li><a href="{{route('history')}}">Our History</a></li>
+                                                    <li><a href="{{route('history')}}">About Jaynagar Majilpur</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown">

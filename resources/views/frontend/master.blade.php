@@ -52,8 +52,14 @@
                         <span data-text-preloader="J" class="letters-loading">
                             J
                         </span>
+                        <span data-text-preloader="." class="letters-loading">
+                            .
+                        </span>
                         <span data-text-preloader="m" class="letters-loading">
                             m
+                        </span>
+                        <span data-text-preloader="." class="letters-loading">
+                            .
                         </span>
                         <span data-text-preloader="m" class="letters-loading">
                             m

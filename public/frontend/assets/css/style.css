@@ -867,6 +867,11 @@ img {
   font-family: var(--thm-font);
 }
 
+
+
+
+
+
 .handle-preloader .animation-preloader .txt-loading .letters-loading:before {
   position: absolute;
   top: 0;
