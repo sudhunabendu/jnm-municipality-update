@@ -5,15 +5,15 @@
                     <div class="main-header-one__top-inner">
                         <div class="main-header-one__top-left">
                             <ul class="main-header-one__top-left-menu">
-                                <li><a href="#">Council</a></li>
-                                <li><a href="#">Government</a></li>
+                                {{-- <li><a href="#">Council</a></li>
+                                <li><a href="#">Government</a></li> --}}
                                 <li><a href="#">Complaints</a></li>
                             </ul>
 
                             <ul class="main-header-one__top-left-social-link">
-                                <li><a href="#"><span class="icon-facebook-app-symbol"></span></a></li>
-                                <li><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                                <li><a href="https://www.facebook.com/jmmwb?rdid=xoj5PcfNVBjfoEbx&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17Af1Kk5RQ%2F#" target="_blank" rel="noopener noreferrer"><span class="icon-facebook-app-symbol"></span></a></li>
+                                {{-- <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li><a href="#"><span class="icon-instagram"></span></a></li> --}}
                             </ul>
                         </div>
 
@@ -197,14 +197,14 @@
                                             <li class="dropdown">
                                                 <a href="#">Services</a>
                                                 <ul>
-                                                    <li><a href="services.html">Services</a></li>
+                                                    <li><a href="{{route('services')}}">Services</a></li>
                                                     <li><a href="departments-1.html">Departments One</a></li>
                                                     <li><a href="departments-2.html">Departments Two</a></li>
                                                     <li><a href="departments-details.html">Departments Details</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
-                                                <a href="#">Pages</a>
+                                                <a href="#">Media</a>
                                                 <ul>
                                                     <li><a href="{{route('gallery')}}">Gallery</a></li>
                                                     {{-- <li><a href="faq.html">Faq</a></li>
@@ -237,16 +237,16 @@
                                             <span class="icon-headphones"></span>
                                         </div>
                                         <div class="text">
-                                            <p>Call Anytime</p>
+                                            <p>Call Mon - Fri 8.00 am - 6.00 pm</p>
                                             <a href="tel:3336660000">333 666 0000</a>
                                         </div>
                                     </div>
 
-                                    <div class="main-header-one__bottom-right-btn">
+                                    {{-- <div class="main-header-one__bottom-right-btn">
                                         <a class="btn-one" href="#">
                                             <span class="txt">Report an Issues</span>
                                         </a>
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                             </div>

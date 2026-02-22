@@ -46,7 +46,7 @@
                         </div>
 
                         <!-- Date -->
-                        <div class="col-sm-6">
+                        {{-- <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="event_date">News & Event Date <span style="color:red">*</span></label>
                                 <input id="event_date" name="event_date" type="date"
@@ -55,6 +55,25 @@
                                 @error('event_date')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
+                            </div>
+                        </div> --}}
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="event_date">News & Event Date <span style="color:red">*</span></label>
+                                <input id="event_date" 
+                                       name="event_date" 
+                                       type="date"
+                                       min="{{ date('Y-m-d') }}"
+                                       class="form-control @error('event_date') is-invalid @enderror"
+                                       placeholder="Enter News & Event Date" 
+                                       value="{{ old('event_date') }}"
+                                       onchange="validateDate(this)">
+                                @error('event_date')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                                <small id="date_error" class="text-danger" style="display:none;">
+                                    Please select today or a future date
+                                </small>
                             </div>
                         </div>
                     </div>
@@ -165,6 +184,28 @@
                 $(this).parents(".input-group").remove();
                 x--;
             });
+        });
+    </script>
+    <script>
+        function validateDate(input) {
+            const today = new Date().toISOString().split('T')[0];
+            const error_msg = document.getElementById('date_error');
+            
+            if (input.value < today) {
+                input.classList.add('is-invalid');
+                error_msg.style.display = 'block';
+                input.value = ''; // Clear invalid selection
+            } else {
+                input.classList.remove('is-invalid');
+                error_msg.style.display = 'none';
+            }
+        }
+    
+        // Set min date on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('event_date');
+            dateInput.setAttribute('min', today);
         });
     </script>
 @endsection

@@ -53,9 +53,9 @@ class AuthController extends Controller
 
     public function insert(){
         $data = new User();
-        $data->name = 'Admin';
-        $data->email = 'Admin@yopmail.com';
-        $data->password = Hash::make("password");
+        $data->name = 'Nabendu Bose';
+        $data->email = 'nabendubose1991@gmail.com';
+        $data->password = Hash::make("Goodtime2323@");
         $data->status = 'Active';
         $data->save();
     }
@@ -68,20 +68,23 @@ class AuthController extends Controller
 
     public function assignRole(){
         $user = User::find(1);
-        $user->assignRole('super-admin');
+        $user->assignRole('admin');
         return $user;
     }
 
 
     public function createPermission(){
+        // $permission = Permission::create(['name' => 'user-create']);
+        // return $permission;
         //$permission = Permission::create(['name' => 'gallery-create']);
         //$permission = Permission::create(['name' => 'gallery-view']);
         //$permission = Permission::create(['name' => 'gallery-edit']);
         //$permission = Permission::create(['name' => 'gallery-delete']);
         //return $permission;
-        $user = User::where('name','Spandan Chatterjee')->first();
-        $user->getAllPermissions();
-        $user->getRoleNames();
+        $user = User::where('name','Admin')->first();
+        // $user->getAllPermissions();
+        // $user->getRoleNames();
+        $user->givePermissionTo('user-create');
         return $user;
     }
 }

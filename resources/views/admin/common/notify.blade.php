@@ -25,3 +25,29 @@
 </div>
 
 @endif
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const toast = document.querySelector('.toast');
+      if (toast) {
+          // Auto-dismiss after 5 seconds
+          setTimeout(function() {
+              toast.classList.remove('show');
+              setTimeout(function() {
+                  toast.remove();
+              }, 500); // Wait for fade-out animation
+          }, 5000);
+
+          // Manual close button functionality
+          const closeBtn = toast.querySelector('.close');
+          if (closeBtn) {
+              closeBtn.addEventListener('click', function() {
+                  toast.classList.remove('show');
+                  setTimeout(function() {
+                      toast.remove();
+                  }, 500);
+              });
+          }
+      }
+  });
+</script>

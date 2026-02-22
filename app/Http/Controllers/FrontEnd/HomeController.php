@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $banners = Banner::all();
         $newsEvents = News::orderBy('event_date', 'desc')->get();
-        $councillor = Council::all();
+        $councillor = Council::where('status','active')->orderBy('word_number', 'asc')->get();
         if ($banners || $newsEvents) {
             return view('frontend.home.index', compact('banners', 'newsEvents','councillor'));
         }
@@ -55,7 +55,8 @@ class HomeController extends Controller
     {
         $total = Visitor::count();
         $today = Visitor::whereDate('created_at', today())->count();
-        return view('frontend.about.index',compact('total','today'));
+        $banners = Banner::all();
+        return view('frontend.about.index',compact('total','today','banners'));
     }
 
 

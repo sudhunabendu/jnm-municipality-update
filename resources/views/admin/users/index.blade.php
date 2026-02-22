@@ -46,11 +46,15 @@
                                         </li>
                                     </ul>
                                 </div>
-                                @can('user-create')
+                                {{-- @can('user-create')
+                                @role(['admin', 'super-admin']) --}}
+                                @if(auth()->check() && (auth()->user()->can('user-create') || auth()->user()->hasRole(['admin', 'super-admin'])))
                                 <div>
                                     <a href="{{route('admin.users.add')}}" class="btn btn-success"><i class="bx bx-plus me-1"></i> Add New</a>
                                 </div>
-                                @endcan
+                                {{-- @endrole
+                                @endcan --}}
+                                @endif
 
                                 {{-- <div class="dropdown">
                                     <a class="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle"

@@ -289,7 +289,7 @@
             $(this).removeClass("is-invalid");
         });
         $("[name='email']").on("focus", function() {
-            $(this).numeric();
+            // $(this).numeric();
             $("[data-error='email']").html("");
             $(this).removeClass("is-invalid");
         });

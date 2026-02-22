@@ -125,7 +125,8 @@
     right: -999999px;
     bottom: 100px;
     height: 320px;
-    background: var(--thm-base);
+    background: #ffffff;
+    /* background: var(--thm-base); */
     content: "";
     z-index: -1;
 }

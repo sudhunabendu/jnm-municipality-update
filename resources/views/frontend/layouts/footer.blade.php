@@ -21,14 +21,14 @@
                             </div>
                             <ul class="our-company-info__social-link">
                                 <li>
-                                    <a href="#"><span class="icon-facebook-app-symbol"></span></a>
+                                    <a href="https://www.facebook.com/jmmwb?rdid=xoj5PcfNVBjfoEbx&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17Af1Kk5RQ%2F#"  target="_blank" rel="noopener noreferrer"><span class="icon-facebook-app-symbol"></span></a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="#"><span class="icon-twitter"></span></a>
                                 </li>
                                 <li>
                                     <a href="#"><span class="icon-instagram"></span></a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>

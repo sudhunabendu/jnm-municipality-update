@@ -20,3 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('insert',[AuthController::class,'insert']);
+Route::get('assign',[AuthController::class,'assignRole']);
+Route::get('permission',[AuthController::class,'createPermission']);
+

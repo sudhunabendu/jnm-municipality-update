@@ -86,47 +86,83 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Subject</th>
                                     <th scope="col">Message</th>
+                                    <th scope="col"><span>view</span></th>
                                     <th style="width: 80px; min-width: 80px;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i=1 ?>
+                                <?php $i = 1; ?>
                                 @foreach ($contacts as $item)
                                     <tr>
-                                    <th scope="row">
-                                        <div class="form-check font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="contacusercheck1">
-                                            <label class="form-check-label" for="contacusercheck1"></label>
-                                        </div>
-                                    </th>
-                                    <td>{{$i++}}</td>
-                                    <td>
-                                        <a href="#" class="text-body">{{ $item->name ?? ""}}</a>
-                                    </td>
+                                        <th scope="row">
+                                            <div class="form-check font-size-16">
+                                                <input type="checkbox" class="form-check-input" id="contacusercheck1">
+                                                <label class="form-check-label" for="contacusercheck1"></label>
+                                            </div>
+                                        </th>
+                                        <td>{{ $i++ }}</td>
+                                        <td>
+                                            <a href="#" class="text-body">{{ $item->name ?? '' }}</a>
+                                        </td>
 
-                                    <td>{{ $item->email ?? ""}}</td>
-                                     <td>{{ $item->phone ?? ""}}</td>
-                                    <td>
-                                        {{ $item->subject ?? ""}}
-                                    </td>
-                                    <td>
-                                        {{ $item->message ?? ""}}
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bx bx-dots-horizontal-rounded"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            </ul>
+                                        <td>{{ $item->email ?? '' }}</td>
+                                        <td>{{ $item->phone ?? '' }}</td>
+                                        <td>
+                                            {{ $item->subject ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $item->message ?? '' }}
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-eye" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                                aria-hidden="true"></i>
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button
+                                                    class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
+                                                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bx bx-dots-horizontal-rounded"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Button trigger modal -->
+                                    {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">
+                                        Launch static backdrop modal
+                                    </button> --}}
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    ...
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Understood</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </td>
-                                </tr>
+                                    </div>
                                 @endforeach
 
                             </tbody>

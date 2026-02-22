@@ -162,7 +162,7 @@
                     <div class="about-style1__content">
                         <div class="sec-title">
                             <div class="sub-title">
-                                <h6>About Leader</h6>
+                                <h6>About Chairman</h6>
                             </div>
                             <h2>Meet <span>Ideological</span> <br> Leader for Youth <br>Generation</h2>
                         </div>
@@ -172,10 +172,10 @@
                                 egestas metus, mauris dictum sollicitudin hendrerit quis in magna cras adipiscing
                                 posuere augue imperdiet arcu.</p>
                         </div>
-                        <div class="about-style1__content-signature">
+                        {{-- <div class="about-style1__content-signature">
                             <img src={{ asset('public/frontend/assets/images/resources/about-v1-signature.png') }}
                                 alt="#">
-                        </div>
+                        </div> --}}
                         <ul class="about-style1__content-list">
                             <li>
                                 <div class="icon-box">
@@ -205,11 +205,11 @@
                             </li>
                         </ul>
 
-                        <div class="about-style1__content-btn">
+                        {{-- <div class="about-style1__content-btn">
                             <a class="btn-one" href="about.html">
                                 <span class="txt">Report an Issues</span>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -222,8 +222,11 @@
                         <div class="shape2 rotate-me"><img
                                 src={{ asset('public/frontend/assets/images/shapes/thm-shape1.png') }} alt="#"></div>
                         <div class="shape3"></div>
-                        <div class="about-style1__img-inner">
+                        {{-- <div class="about-style1__img-inner">
                             <img src={{ asset('public/frontend/assets/images/about/about-v1-img1.png') }} alt="#">
+                        </div> --}}
+                        <div class="about-style1__img-inner">
+                            <img src={{ asset('public/images/chaiman.png') }} alt="#">
                         </div>
                         {{-- <div class="experience-box text-center">
                             <h2>
@@ -235,8 +238,8 @@
                         </div> --}}
 
                         <div class="about-style1__img-client-info">
-                            <h3>Jordon Cooper</h3>
-                            <p>City Mayor</p>
+                            <h3>Sukumar Halder</h3>
+                            <p>Chairman</p>
                         </div>
                     </div>
                 </div>
@@ -251,33 +254,13 @@
     </section> --}}
     <section class="news-events-section">
         <div class="section-header text-center">
-            <h3><span class="icon">📰</span> News & Events</h3>
+            <h2><span class="icon" pass>📰</span> News & Events</h2>
         </div>
-
+        &nbsp;
         <div class="news-events-container">
             <!-- Left: Image Carousel -->
 
             {{-- <div class="image-carousel">
-                @if ($newsEvents && count($newsEvents) > 0)
-                    @foreach ($newsEvents as $newsEvent)
-                        @if ($newsEvent->type == 'event')
-                            <div class="carousel-inner">
-
-                                <img src="{{ asset('public/images/news/' . $newsEvent->image) }}" alt="Event 1"
-                                    class="active">
-                                <img src="{{ asset('public/frontend/assets/images/news/event2.jpg') }}" alt="Event 2">
-                                <img src="{{ asset('public/frontend/assets/images/news/event3.jpg') }}" alt="Event 3">
-                            </div>
-                        @endif
-                    @endforeach
-                @endif
-                <div class="carousel-controls">
-                    <button class="prev-btn">
-                        << /button>
-                            <button class="next-btn">></button>
-                </div>
-            </div> --}}
-            <div class="image-carousel">
                 @php
                     $eventImages = $newsEvents->where('type', 'event')->whereNotNull('image');
                 @endphp
@@ -285,13 +268,43 @@
                     <div class="carousel-inner">
                         @foreach ($eventImages as $index => $newsEvent)
                             <img src="{{ asset('public/images/news/' . $newsEvent->image) }}"
-                                alt="{{ $newsEvent->title }}" class="{{ $index == 0 ? 'active' : '' }}">
+                                alt="{{ $newsEvent->title }}" class="{{ $index == 0 ? 'active' : '' }}" style="height: 100%" >
                         @endforeach
                     </div>
                     <div class="carousel-controls">
                         <button class="prev-btn">&lt;</button>
                         <button class="next-btn">&gt;</button>
                     </div>
+                @endif
+            </div> --}}
+
+            <div class="image-carousel carousel slide" data-bs-ride="carousel">
+                @php
+                    $eventImages = $newsEvents->where('type', 'event')->whereNotNull('image');
+                @endphp
+            
+                @if ($eventImages->count() > 0)
+                    <div class="carousel-inner" style="height: 400px; overflow: hidden;">
+                        @foreach ($eventImages as $index => $newsEvent)
+                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                <img 
+                                    src="{{ asset('public/images/news/' . $newsEvent->image) }}"
+                                    alt="{{ $newsEvent->title }}" 
+                                    class="d-block w-100 h-100"
+                                    style="object-fit: cover;"
+                                    loading="lazy"
+                                >
+                            </div>
+                        @endforeach
+                    </div>
+            
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target=".image-carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon">&lt;</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target=".image-carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon">&gt;</span>
+                    </button>
                 @endif
             </div>
 
@@ -416,6 +429,63 @@
                                                     <a href="#">Cemeteries and Crematoriums</a>
                                                 </div>
                                             </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Assessment & Collection</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Tranning</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Engineering (Civil)</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Finance & Accounts</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Health</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Information Technology</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Planning & Development</a>
+                                                </div>
+                                            </li>
+                                           
                                         </ul>
                                     </div>
                                 </div>
@@ -428,8 +498,64 @@
                                                     <span class="icon-check-mark"></span>
                                                 </div>
                                                 <div class="text">
+                                                    <a href="#">Roads & Development</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Parks & Squares</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Institute of Urban Management</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">License</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Electricity</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Election Office</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
                                                     <a href="#">Building and maintenance of roads, streets and
                                                         flyovers</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-check-mark"></span>
+                                                </div>
+                                                <div class="text">
+                                                    <a href="#">Central Records</a>
                                                 </div>
                                             </li>
 
@@ -494,7 +620,8 @@
 
 
     <!--Start Testimonials Style1-->
-    <section class="testimonials-style1">
+
+    {{-- <section class="testimonials-style1">
         <div class="shape1"></div>
         <div class="shape2 rotate-me"><img src={{ asset('public/frontend/assets/images/shapes/services-v1-shape1.png') }}
                 alt="">
@@ -538,7 +665,7 @@
                             }
                         }'>
 
-                            <!--Start Testimonials Style1 Single-->
+                          
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -582,9 +709,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--End Testimonials Style1 Single-->
-
-                            <!--Start Testimonials Style1 Single-->
+                          
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -628,9 +753,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--End Testimonials Style1 Single-->
-
-                            <!--Start Testimonials Style1 Single-->
+                          
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -674,9 +797,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--End Testimonials Style1 Single-->
-
-                            <!--Start Testimonials Style1 Single-->
+                          
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -720,9 +841,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--End Testimonials Style1 Single-->
-
-                            <!--Start Testimonials Style1 Single-->
+                          
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -766,9 +885,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--End Testimonials Style1 Single-->
-
-                            <!--Start Testimonials Style1 Single-->
+                           
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -812,9 +929,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--End Testimonials Style1 Single-->
-
-                            <!--Start Testimonials Style1 Single-->
+                           
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -858,9 +973,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--End Testimonials Style1 Single-->
-
-                            <!--Start Testimonials Style1 Single-->
+                         
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -904,9 +1017,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--End Testimonials Style1 Single-->
-
-                            <!--Start Testimonials Style1 Single-->
+                          
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -950,13 +1061,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--End Testimonials Style1 Single-->
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
+
     <!--End Testimonials Style1-->
 
 
@@ -1192,7 +1304,7 @@
                             <div class="sub-title">
                                 <h6>EFFICIENCY - OPPORTUNITY</h6>
                             </div>
-                            <h2>City Municipality Services <br> And Departments</h2>
+                            <h2>Jaynagar Majilpur Municipality Services <br> And Departments</h2>
                         </div>
                         <div class="video-box">
                             <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
@@ -1264,7 +1376,7 @@
 
 
     <!--Start Cta Style1-->
-    <section class="cta-style1">
+    {{-- <section class="cta-style1">
         <div class="cta-style1__bg" style="background-image: url(assets/images/backgrounds/cta-v1-bg.png);"></div>
         <div class="auto-container">
             <div class="row">
@@ -1289,7 +1401,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--End Cta Style1-->
 
 

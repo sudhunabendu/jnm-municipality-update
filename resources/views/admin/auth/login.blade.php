@@ -53,7 +53,7 @@
                                         <form class="mt-4 pt-2" action={{route('admin.login')}} method="POST">
                                             @csrf
                                             <div class="form-floating form-floating-custom mb-4">
-                                                <input type="email" class="form-control" id="input-username" placeholder="Enter Email" name="email" value="jnm.admin@yopmail.com">
+                                                <input type="email" class="form-control" id="input-username" placeholder="Enter Email" name="email">
                                                 <label for="input-username">Email</label>
                                                 <div class="form-floating-icon">
                                                    <i data-feather="users"></i>
@@ -61,7 +61,7 @@
                                             </div>
 
                                             <div class="form-floating form-floating-custom mb-4 auth-pass-inputgroup">
-                                                <input type="password" class="form-control pe-5" id="password-input" placeholder="Enter Password" name="password" value="password">
+                                                <input type="password" class="form-control pe-5" id="password-input" placeholder="Enter Password" name="password">
                                                 
                                                 <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
                                                     <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>

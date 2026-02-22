@@ -8,6 +8,7 @@ use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\FrontEnd\GalleryController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\Admin\CouncilController;
+use App\Http\Controllers\FrontEnd\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,9 @@ Route::get('/gallery',[GalleryController::class,'index'])->name('gallery');
 Route::post('/contact-us/store',[ContactController::class,'storeContact'])->name('contact-us.store');
 
 Route::get('/news-events/{newsEvent}',[HomeController::class,'show'])->name('frontend.news_events.show');
+
+//services
+Route::get('/services',[ServiceController::class,'index'])->name('services');
 
 
 Route::get('/category',[HomeController::class,'category'])->name('category');
@@ -84,7 +88,7 @@ Route::prefix("admin")->group(function () {
 
         //User Management
         Route::get('/users', [App\Http\Controllers\Admin\UserController::class,'getUsers'])->name('admin.users');
-        Route::get('/users/add', [App\Http\Controllers\Admin\UserController::class,'createUser'])->name('admin.users.add')->middleware(['permission:user-create']);
+        Route::get('/users/add', [App\Http\Controllers\Admin\UserController::class,'createUser'])->name('admin.users.add')->middleware(['permission:user-create|role:admin|role:super-admin']);
         Route::post('/users/create', [App\Http\Controllers\Admin\UserController::class,'storeUser'])->name('admin.users.create');
     });
 

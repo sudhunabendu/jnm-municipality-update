@@ -5,14 +5,24 @@
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/module-css/09-breadcrumb-section.css') }}">
     <!--Start Breadcrumb Style1-->
     <section class="breadcrumb-style1">
-        <div class="breadcrumb-style1__bg"
-            style="background-image: url('{{ asset('public/frontend/assets/images/backgrounds/breadcrumb-v1-bg.jpg') }}');">
-        </div>
+        {{-- <div class="breadcrumb-style1__bg" style="background-image: url('{{ asset('public/frontend/assets/images/backgrounds/breadcrumb-v1-bg.jpg') }}');">
+        </div> --}}
+        @foreach ($banners as $banner)
+            @php
+                $images = json_decode($banner->images, true);
+                $firstImage = !empty($images) && is_array($images) ? $images[0] ?? null : null;
+            @endphp
+            @if ($firstImage)
+                <div class="breadcrumb-style1__bg"
+                    style="background-image: url('{{ asset('public/images/banner_images/' . $firstImage) }}');">
+                </div>
+            @endif
+        @endforeach
         <div class="auto-container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="breadcrumb-style1__inner text-center">
-                        <h2>About Us</h2>
+                        {{-- <h2>About Us</h2> --}}
                     </div>
                 </div>
             </div>
@@ -46,7 +56,7 @@
                         <div class="shape2 float-bob-y"><img
                                 src={{ asset('public/frontend/assets/images/shapes/thm-shape1.png') }} alt="#">
                         </div>
-                        <div class="about-style2__img-video-box text-center">
+                        {{-- <div class="about-style2__img-video-box text-center">
                             <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
                                 <div class="about-style2__img-video-box-icon">
                                     <span class="icon-play-1"></span>
@@ -56,10 +66,11 @@
                             <div class="title">
                                 <h3>Watch Leader <br> Talk</h3>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="inner">
-                            <img src={{ asset('public/frontend/assets/images/about/about-page-about-img1.jpg') }}
-                                alt="#">
+                            {{-- <img src={{ asset('public/frontend/assets/images/about/about-page-about-img1.jpg') }}
+                                alt="#"> --}}
+                            <img src={{ asset('public/images/chaiman.png') }} alt="#">
                         </div>
                     </div>
                 </div>
@@ -113,11 +124,11 @@
                                 </ul>
                             </div>
 
-                            <ul class="about-style2--about__social-links">
+                            {{-- <ul class="about-style2--about__social-links">
                                 <li><a href="#"><span class="icon-facebook-app-symbol"></span></a></li>
                                 <li><a href="#"><span class="icon-twitter"></span></a></li>
                                 <li><a href="#"><span class="icon-instagram"></span></a></li>
-                            </ul>
+                            </ul> --}}
 
                         </div>
                     </div>
