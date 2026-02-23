@@ -248,11 +248,8 @@
     </section>
     <!--End About Style1-->
 
-    <!--Start Services Style1-->
-    {{-- <section class="services-style1">
-        <h3>Notice Board</h3>
-    </section> --}}
-    <section class="news-events-section">
+
+    {{-- <section class="news-events-section">
         <div class="section-header text-center">
             <h2><span class="icon" pass>📰</span> News & Events</h2>
         </div>
@@ -260,36 +257,18 @@
         <div class="news-events-container">
             <!-- Left: Image Carousel -->
 
-            {{-- <div class="image-carousel">
-                @php
-                    $eventImages = $newsEvents->where('type', 'event')->whereNotNull('image');
-                @endphp
-                @if ($eventImages->count() > 0)
-                    <div class="carousel-inner">
-                        @foreach ($eventImages as $index => $newsEvent)
-                            <img src="{{ asset('public/images/news/' . $newsEvent->image) }}"
-                                alt="{{ $newsEvent->title }}" class="{{ $index == 0 ? 'active' : '' }}" style="height: 100%" >
-                        @endforeach
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="prev-btn">&lt;</button>
-                        <button class="next-btn">&gt;</button>
-                    </div>
-                @endif
-            </div> --}}
-
             <div class="image-carousel carousel slide" data-bs-ride="carousel">
                 @php
                     $eventImages = $newsEvents->where('type', 'event')->whereNotNull('image');
                 @endphp
-            
+
                 @if ($eventImages->count() > 0)
                     <div class="carousel-inner" style="height: 400px; overflow: hidden;">
                         @foreach ($eventImages as $index => $newsEvent)
                             <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                <img 
+                                <img
                                     src="{{ asset('public/images/news/' . $newsEvent->image) }}"
-                                    alt="{{ $newsEvent->title }}" 
+                                    alt="{{ $newsEvent->title }}"
                                     class="d-block w-100 h-100"
                                     style="object-fit: cover;"
                                     loading="lazy"
@@ -297,7 +276,7 @@
                             </div>
                         @endforeach
                     </div>
-            
+
                     <!-- Controls -->
                     <button class="carousel-control-prev" type="button" data-bs-target=".image-carousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon">&lt;</span>
@@ -331,6 +310,79 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </section> --}}
+
+    <section class="news-events-section">
+        <div class="section-header text-center">
+            <h2><span class="icon" pass>📰</span> News & Events</h2>
+        </div>
+
+        <div class="news-events-container">
+
+            <!-- Left: Image Carousel -->
+            <div id="newsEventCarousel" class="carousel slide" data-bs-ride="carousel">
+                @php
+                    $eventImages = $newsEvents->where('type', 'event')->whereNotNull('image');
+                @endphp
+
+                @if ($eventImages->count() > 0)
+                    <!-- IMPORTANT: removed inline height style -->
+                    <div class="carousel-inner">
+                        @foreach ($eventImages as $index => $newsEvent)
+                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                <img src="{{ asset('public/images/news/' . $newsEvent->image) }}"
+                                    alt="{{ $newsEvent->title }}" loading="lazy">
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Controls (target the id) -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#newsEventCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#newsEventCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                @else
+
+                @endif
+            </div>
+
+            <!-- Right: News Ticker -->
+            <div class="news-ticker"  style="background-color: rgb(242, 230, 191);">
+                <div class="ticker-container">
+                    <ul class="ticker-list">
+                        @php
+                            $newsImages = $newsEvents->where('type', 'news');
+                        @endphp
+
+                        @if ($newsImages && count($newsImages) > 0)
+                            @foreach ($newsImages as $newsEvent)
+                                <li class="ticker-item">
+                                    <span class="date">
+                                        <h5>{{ \Carbon\Carbon::parse($newsEvent->event_date)->format('F d, Y') }}</h5>
+                                    </span>
+                                    <a href="{{ route('frontend.news_events.show', $newsEvent->slug) }}" target="_blank">
+                                        <p>
+                                            <strong style="color:#0d6efd;">{{ $newsEvent->title ?? '' }}</strong> -
+                                            <span style="color:#0d6efd;">{{ Str::limit(strip_tags($newsEvent->content), 100) }} &NonBreakingSpace;<img src="https://www.bkpmuty.in/userfiles/image/new.gif" alt=""></span>
+                                        </p>
+                                    </a>
+                                </li>
+                            @endforeach
+                        @else
+                            <p></p>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </section>
     <!--End Services Style1-->
@@ -485,7 +537,7 @@
                                                     <a href="#">Planning & Development</a>
                                                 </div>
                                             </li>
-                                           
+
                                         </ul>
                                     </div>
                                 </div>
@@ -665,7 +717,7 @@
                             }
                         }'>
 
-                          
+
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -709,7 +761,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -753,7 +805,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -797,7 +849,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -841,7 +893,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -885,7 +937,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -929,7 +981,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -973,7 +1025,7 @@
                                     </div>
                                 </div>
                             </div>
-                         
+
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -1017,7 +1069,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
                             <div class="testimonials-style1__single">
                                 <div class="testimonials-style1__single-content">
                                     <div class="rating-box">
@@ -1061,7 +1113,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -1359,8 +1411,9 @@
                             <div class="team-stye1__single-content text-center">
                                 <div class="inner-box">
                                     <div class="round-bg"></div>
-                                    <h2><a href="team-details.html">{{$item->first_name . ' ' . $item->last_name}}</a></h2>
-                                    <p>{{$item->position}}</p>
+                                    <h2><a href="team-details.html">{{ $item->first_name . ' ' . $item->last_name }}</a>
+                                    </h2>
+                                    <p>{{ $item->position }}</p>
                                 </div>
                             </div>
                         </div>

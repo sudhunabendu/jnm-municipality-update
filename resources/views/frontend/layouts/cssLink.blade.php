@@ -38,22 +38,53 @@
 <link rel="stylesheet" href={{ asset('public/frontend/assets/css/style.css') }} />
 <link rel="stylesheet" href={{ asset('public/frontend/assets/css/responsive.css') }} />
 <style>
-    .image-carousel .carousel-inner {
+    /* .image-carousel .carousel-inner {
         height: 400px;
-        /* Fixed height for consistency */
         background: #f8f9fa;
     }
 
     .image-carousel img {
         object-fit: cover;
-        /* Maintains aspect ratio + fills container */
         object-position: center;
         max-width: 100%;
         height: 100%;
     }
-
-    /* Optional: Smooth transitions */
     .carousel-item {
         transition: transform 0.6s ease-in-out;
-    }
+    } */
+     /* Increase overall carousel width (left side) */
+ .news-events-container{
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  /* left column width */
+  #newsEventCarousel{
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
+
+  /* right column width */
+  .news-ticker{
+    flex: 0 0 40%;
+    max-width: 40%;
+    align-self: flex-start;
+  }
+
+  /* set height here */
+  #newsEventCarousel,
+  #newsEventCarousel .carousel-inner,
+  #newsEventCarousel .carousel-item{
+    /* height: 550px; change height */
+     height: 750px;
+  }
+
+  #newsEventCarousel img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
 </style>

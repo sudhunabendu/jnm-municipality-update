@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ContactController extends Controller
 {
@@ -19,9 +20,13 @@ class ContactController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
+            //'phone' => 'required|string|max:20',
+            'phone' => ['required', 'phone:IN'],
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
+        ],[
+            'phone.required' => 'Phone number is required.',
+            'phone.phone'    => 'Please enter a valid Indian mobile number (+91).',
         ]);
         try {
             $new_contact = new Contact();

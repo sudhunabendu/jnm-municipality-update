@@ -111,7 +111,8 @@
                                             {{ $item->subject ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $item->message ?? '' }}
+                                            {{-- {{ $item->message ?? '' }} --}}
+                                            {{ \Illuminate\Support\Str::limit(strip_tags($item->message), 30, '...') }}
                                         </td>
                                         <td>
                                             <i class="fa fa-eye" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
@@ -152,7 +153,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    ...
+                                                   {{$item->message ?? ''}}
                                                 </div>
 
                                                 <div class="modal-footer">
