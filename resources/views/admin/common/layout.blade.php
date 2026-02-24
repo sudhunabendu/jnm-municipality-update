@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <title>Dashboard | JNM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
@@ -18,7 +19,8 @@
     <link href={{ asset('public/dason/css/icons.min.css') }} rel="stylesheet" type="text/css" />
     <link href={{ asset('public/dason/css/app.min.css') }} id="app-style" rel="stylesheet" type="text/css" />
     <link href={{ asset('public/dason/css/style.css') }} rel="stylesheet" type="text/css" />
-
+    @yield('bannerCSS')
+    @yield('newsCSS')
     <style>
         .navbar-header,
         .navbar-brand-box {
@@ -95,8 +97,10 @@
     <script src={{ asset('public/dason/js/app.js') }}></script>
     <script src="{{ asset('public/dason/js/jquery.alphanum.js')}}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+    <script src={{ asset('public/dason/js/sweetAlert.js') }}></script>
     @yield('bannerJS')
+    @yield('newsJS')
     @yield('roleJS')
     @yield('news_eventsJS')
     @yield('galleryJS')

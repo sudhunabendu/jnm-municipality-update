@@ -1,6 +1,10 @@
 @extends('admin.common.layout')
 
 @section('content')
+@section('bannerCSS')
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+  rel="stylesheet">
+@endsection
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -47,7 +51,8 @@
                                     </ul>
                                 </div>
                                 <div>
-                                    <a href="{{route('admin.banners.add')}}" class="btn btn-success"><i class="bx bx-plus me-1"></i> Add New</a>
+                                    <a href="{{ route('admin.banners.add') }}" class="btn btn-success"><i
+                                            class="bx bx-plus me-1"></i> Add New</a>
                                 </div>
 
                                 {{-- <div class="dropdown">
@@ -101,9 +106,9 @@
                                         @endphp
                                         <td>
                                             @if (!empty($images) && isset($images[0]))
-                                            <img src="{{ asset('public/images/banner_images/' . $images[0]) }}" alt=""
-                                                class="avatar-sm rounded-circle me-2">
-                                            {{-- <a href="#" class="text-body">Phyllis Gatlin</a> --}}
+                                                <img src="{{ asset('public/images/banner_images/' . $images[0]) }}"
+                                                    alt="" class="avatar-sm rounded-circle me-2">
+                                                {{-- <a href="#" class="text-body">Phyllis Gatlin</a> --}}
                                             @endif
                                         </td>
                                         <td>{{ $banner->title }}</td>
@@ -114,16 +119,31 @@
                                         {{-- <td>{{ $created_at->diffForHumans() }}</td> --}}
                                         <td>{{ $created_at->format('d M, Y') }}</td>
                                         <td>{{ $updated_at->format('d M, Y') }}</td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($banner->status == 'Active')
                                                 <span class="badge badge-pill badge-soft-success font-size-11">Active</span>
                                             @else
                                                 <span class="badge badge-pill badge-soft-danger font-size-11">Inactive</span>
                                             @endif
+                                        </td> --}}
+                                        @php
+                                            if ($banner->status == 'Active'):
+                                                $color = 'success';
+                                            else:
+                                                $color = 'danger';
+                                            endif;
+                                        @endphp
+                                        <td>
+                                            <div class="switch">
+                                                <input type="checkbox" name="toogle" value="{{ $banner->id }}"
+                                                    {{ $banner->status == 'Active' ? 'checked' : '' }}
+                                                    data-toggle="toggle" data-on="Active" data-off="Inactive"
+                                                    data-onstyle="success" data-offstyle="danger">
+                                            </div>
                                         </td>
                                         <td>
-                                            
-                                            
+
+
                                             <div class="dropdown">
                                                 <button
                                                     class="btn btn-link font-size-16 shadow-none py-0 text-muted dropdown-toggle"
@@ -132,17 +152,17 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     <li><a href="{{ route('admin.banners.edit', $banner->id) }}"
-                                                class="px-3 text-primary"><i class="bx bx-pencil font-size-18">Edit</i></a></li>
+                                                            class="px-3 text-primary"><i
+                                                                class="bx bx-pencil font-size-18">Edit</i></a></li>
                                                     <li><a href="{{ route('admin.banners.delete', $banner->id) }}"
-                                                class="px-3 text-danger"><i class="bx bx-trash font-size-18">Trash</i></a></li>
+                                                            class="px-3 text-danger"><i
+                                                                class="bx bx-trash font-size-18">Trash</i></a></li>
                                                     {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                                                 </ul>
                                             </div>
                                         </td>
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
                         <!-- end table -->
@@ -152,4 +172,52 @@
             </div>
         </div>
     </div>
+
+@section('bannerJS')
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<script>
+  $('input[name=toogle]').change(function(){
+      var mode=$(this).prop('checked');
+      var id=$(this).val();
+      console.log(id);
+      $.ajax({
+        url:"{{route('admin.banners.status_change')}}",
+        type:"POST",
+        data:{
+          _token:'{{csrf_token()}}',
+          mode:mode,
+          id:id,
+        },
+        success:function(response){
+          console.log(response.status)
+          if(response.status){
+            Swal.fire({
+            title: "Success!",
+            // text: response.status,
+            // text: "{{session('success')}}",
+            text: "Status changed successfully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2500
+          });
+            // alert(response.msg)
+            console.log(response.msg)
+          }else{
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Please try again later",
+              showConfirmButton: false,
+              timer: 2500
+          });
+            // alert('Please try again later');
+          }
+        }
+      })
+    });
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@endsection
+
+
 @endsection

@@ -61,7 +61,7 @@ Route::prefix("admin")->group(function () {
         Route::get('/dashboard/banners/edit/{id}', [App\Http\Controllers\Admin\BannerController::class,'editBanner'])->name('admin.banners.edit');
         Route::post('/dashboard/banners/update/{id}', [App\Http\Controllers\Admin\BannerController::class,'updateBanner'])->name('admin.banners.update');
         Route::get('/dashboard/banners/delete/{id}', [App\Http\Controllers\Admin\BannerController::class,'deleteBanner'])->name('admin.banners.delete');
-
+        Route::post('/dashboard/banners/status_change', [App\Http\Controllers\Admin\BannerController::class, 'bannerStatusChange'])->name('admin.banners.status_change');
         // Gallery Routes
         Route::get('/dashboard/gallery', [ControllersGalleryController::class,'index'])->name('admin.gallery');
         Route::get('/dashboard/gallery/add', [ControllersGalleryController::class,'addGallery'])->name('admin.gallery.add');
@@ -72,7 +72,8 @@ Route::prefix("admin")->group(function () {
         Route::get('/news-events/add', [NewsController::class, 'create'])->name('admin.news_events.add');
         Route::post('/news-events/store', [NewsController::class, 'store'])->name('admin.news_events.store');
         Route::get('/news-events/{newsEvent}', [NewsController::class, 'show'])->name('admin.news_events.show');
-
+        Route::post('/news-events/status_change', [NewsController::class, 'newsStatusChange'])->name('admin.news.status_change');
+        Route::delete('/news-events/{id}', [NewsController::class, 'destroy'])->name('admin.news_events.destroy');
 
         //Role Management
         Route::get('/roles', [App\Http\Controllers\Admin\RoleController::class,'index'])->name('admin.roles');

@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\DB;
 class NewsController extends Controller
 {
     // Show all news & events (for widget or list)
-    public function index()
-    {
-        $newsEvents = News::orderBy('event_date', 'desc')->get();
+    public function index(){
+        //$newsEvents = News::orderBy('event_date', 'desc')->get();
+        $newsEvents = News::orderBy('event_date', 'desc')->paginate(10);
         return view('admin.news_events.index', compact('newsEvents'));
     }
 
@@ -66,4 +66,23 @@ class NewsController extends Controller
 
         return redirect()->back()->with('success', 'News/Event created.');
     }
+
+
+    public function destroy($id)
+{
+    $news = News::findOrFail($id);
+    $news->delete(); // soft delete (sets deleted_at)
+
+    return back()->with('success', 'Moved to trash');
+}
+
+
+    public function newsStatusChange(Request $request){
+    if ($request->mode == 'true') {
+        DB::table('news')->where('id', $request->id)->update(['status' => 'Active']);
+    } else {
+        DB::table('news')->where('id', $request->id)->update(['status' => 'Inactive']);
+    }
+    return response()->json(['msg' => 'Successfully status updated', 'status' => true]);
+}
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BannerController extends Controller
 {
@@ -135,6 +136,17 @@ class BannerController extends Controller
         } else {
             return back()->with('error', 'No banner found');
         }
+    }
+
+
+
+    public function bannerStatusChange(Request $request){
+        if ($request->mode == 'true') {
+            DB::table('banners')->where('id', $request->id)->update(['status' => 'Active']);
+        } else {
+            DB::table('banners')->where('id', $request->id)->update(['status' => 'Inactive']);
+        }
+        return response()->json(['msg' => 'Successfully status updated', 'status' => true]);
     }
 
 }
