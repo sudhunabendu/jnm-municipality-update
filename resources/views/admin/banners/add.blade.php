@@ -4,6 +4,7 @@
 <div class="ttt-toast">
     @include('admin.common.notify')
 </div>
+
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
